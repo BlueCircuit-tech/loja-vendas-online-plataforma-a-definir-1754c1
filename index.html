@@ -151,7 +151,519 @@
 
     <!-- ===== MAIN CONTENT ===== -->
     <main class="flex-1 p-6">
-      <!-- TELAS -->
+      <section data-tela="home-vitrine" class="hidden">
+  <!-- Hero -->
+  <div class="relative overflow-hidden bg-gradient-to-br from-marca-800 via-marca-700 to-marca-600 rounded-b-3xl">
+    <div class="absolute inset-0 opacity-10">
+      <svg class="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+        <circle cx="200" cy="100" r="150" fill="white" />
+        <circle cx="1000" cy="300" r="200" fill="white" />
+        <circle cx="700" cy="50" r="80" fill="white" />
+      </svg>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-6 py-16 lg:py-24">
+      <div class="flex flex-col lg:flex-row items-center gap-10">
+        <div class="flex-1 text-center lg:text-left">
+          <span class="inline-block px-4 py-1.5 bg-white/15 backdrop-blur-sm text-white/90 text-sm font-medium rounded-full mb-6">
+            Comunidade Terapêutica desde 2008
+          </span>
+          <h1 class="font-display text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            Transformando vidas<br>através da acolhida
+          </h1>
+          <p class="text-marca-100 text-lg lg:text-xl max-w-xl mb-8 leading-relaxed">
+            Mais de 15 anos recuperando famílias e oferecendo um novo começo através de programas estruturados de tratamento e reinserção social.
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <button onclick="mostrarTela('catalogo-de-programas')" class="px-8 py-3.5 bg-white text-marca-800 font-semibold rounded-xl hover:bg-marca-50 active:scale-95 transition-all shadow-lg shadow-black/10">
+              Ver Programas
+            </button>
+            <button onclick="home_vitrine_doar()" class="px-8 py-3.5 bg-destaque text-white font-semibold rounded-xl hover:bg-destaque/90 active:scale-95 transition-all shadow-lg shadow-destaque/30">
+              Fazer Doação
+            </button>
+          </div>
+        </div>
+        <div class="hidden lg:flex flex-shrink-0">
+          <div class="w-80 h-80 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20">
+            <div class="text-center">
+              <svg class="w-24 h-24 mx-auto text-white mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              <span class="font-display text-white text-lg font-semibold">Caminho de<br>Recuperação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12 space-y-16">
+
+    <!-- Números de Impacto -->
+    <div>
+      <h2 class="font-display text-2xl font-bold text-gray-900 mb-2">Nosso Impacto</h2>
+      <p class="text-gray-500 mb-8">Números que refletem nosso compromisso com a recuperação</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-3 bg-marca-100 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <p class="font-display text-3xl font-bold text-marca-800">1.247</p>
+          <p class="text-gray-500 text-sm mt-1">Vidas transformadas</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-3 bg-green-100 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <p class="font-display text-3xl font-bold text-green-700">78%</p>
+          <p class="text-gray-500 text-sm mt-1">Taxa de recuperação</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-3 bg-amber-100 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <p class="font-display text-3xl font-bold text-amber-700">15</p>
+          <p class="text-gray-500 text-sm mt-1">Anos de experiência</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="w-12 h-12 mx-auto mb-3 bg-purple-100 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          </div>
+          <p class="font-display text-3xl font-bold text-purple-700">320+</p>
+          <p class="text-gray-500 text-sm mt-1">Famílias atendidas/mês</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Programas em Destaque -->
+    <div>
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="font-display text-2xl font-bold text-gray-900">Programas em Destaque</h2>
+          <p class="text-gray-500 mt-1">Conheça nossos programas de acolhimento e tratamento</p>
+        </div>
+        <button onclick="mostrarTela('catalogo-de-programas')" class="text-marca-700 font-semibold hover:text-marca-800 transition-colors hidden sm:flex items-center gap-1">
+          Ver todos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6" id="home-programas-grid"></div>
+    </div>
+
+    <!-- Campanhas Ativas -->
+    <div>
+      <h2 class="font-display text-2xl font-bold text-gray-900 mb-2">Campanhas Ativas</h2>
+      <p class="text-gray-500 mb-8">Participe das nossas ações e faça a diferença</p>
+      <div class="grid md:grid-cols-2 gap-6" id="home-campanhas-grid"></div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div>
+      <h2 class="font-display text-2xl font-bold text-gray-900 mb-2">Depoimentos</h2>
+      <p class="text-gray-500 mb-8">Histórias reais de quem passou pela nossa comunidade</p>
+      <div class="grid md:grid-cols-2 gap-6" id="home-depoimentos-grid"></div>
+    </div>
+
+    <!-- CTA Doação -->
+    <div class="relative overflow-hidden bg-gradient-to-r from-marca-700 to-marca-600 rounded-2xl p-8 lg:p-12 text-center">
+      <div class="absolute inset-0 opacity-5">
+        <svg class="w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
+          <pattern id="hearts" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path d="M30 45 C15 35 5 25 5 15 C5 5 15 0 25 8 C30 12 30 12 30 12 C30 12 30 12 35 8 C45 0 55 5 55 15 C55 25 45 35 30 45Z" fill="white"/>
+          </pattern>
+          <rect width="800" height="300" fill="url(#hearts)"/>
+        </svg>
+      </div>
+      <div class="relative">
+        <div class="w-16 h-16 mx-auto mb-6 bg-white/15 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="font-display text-2xl lg:text-3xl font-bold text-white mb-4">
+          Sua ajuda transforma vidas
+        </h3>
+        <p class="text-marca-100 text-lg max-w-2xl mx-auto mb-8">
+          Com sua contribuição, conseguimos manter os programas de acolhimento, alimentação e tratamento para quem mais precisa. Cada doação faz a diferença.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button onclick="home_vitrine_doar()" class="px-8 py-3.5 bg-white text-marca-800 font-semibold rounded-xl hover:bg-marca-50 active:scale-95 transition-all shadow-lg">
+            Quero Doar Agora
+          </button>
+          <button onclick="mostrarTela('catalogo-de-programas')" class="px-8 py-3.5 bg-white/15 text-white font-semibold rounded-xl hover:bg-white/25 active:scale-95 transition-all border border-white/20">
+            Inscrever-se em Programa
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const HOME_PROGRAMAS = [
+  { id: 1, nome: "Programa de 90 Dias", descricao: "Tratamento intensivo de recuperação com acompanhamento multiprofissional. Inclui terapias individuais, grupais e atividades de reinserção.", preco: 2800, duracao: "90 dias", vagas: 12, cor: "marca", icone: "calendar" },
+  { id: 2, nome: "Acolhimento Familiar", descricao: "Programa voltado para familiares de dependentes, com grupos de apoio, palestras e acompanhamento psicológico semanal.", preco: 0, duracao: "6 meses", vagas: 25, cor: "green", icone: "users" },
+  { id: 3, nome: "Workshops de Reinserção", descricao: "Cursos profissionalizantes e oficinas de arte, música e culinária para reinserção social e geração de renda.", preco: 0, duracao: "3 meses", vagas: 30, cor: "amber", icone: "briefcase" },
+  { id: 4, nome: "Acompanhamento Contínuo", descricao: "Programa pós-alta com atendimento psicológico semanal, grupo de apoio e monitoramento do processo de recuperação.", preco: 0, duracao: "12 meses", vagas: 40, cor: "purple", icone: "heart" }
+];
+
+const HOME_CAMPANHAS = [
+  { id: 1, nome: "Natal Solidário 2025", descricao: "Arrecadação de cestas básicas e presentes para famílias em tratamento. Meta: 500 cestas.", progresso: 72, arrecadado: 360, meta: 500, unidade: "cestas", dataFim: "2025-12-20", status: "ativa" },
+  { id: 2, nome: "Mutirão de Recuperação", descricao: "Campanha de doação para custear tratamentos gratuitos. Todo valor vai diretamente para medicamentos e terapias.", progresso: 45, arrecadado: 22500, meta: 50000, unidade: "R$", dataFim: "2025-12-15", status: "ativa" }
+];
+
+const HOME_DEPOIMENTOS = [
+  { id: 1, nome: "Maria Fernanda S.", relacao: "Família de paciente", texto: "Quando cheguei aqui, estava perdida. O programa de acolhimento familiar me deu ferramentas para entender e ajudar meu filho. Hoje ele está há 18 meses limpo e nós temos uma relação nova.", data: "2025-10-15" },
+  { id: 2, nome: "Carlos A.", relacao: "Ex-paciente", texto: "Entrei na comunidade em 2022, sem esperança. O programa de 90 dias mudou minha vida. Hoje trabalho como facilitador e ajudo outras pessoas a encontrarem seu caminho.", data: "2025-09-22" },
+  { id: 3, nome: "Roberta M.", relacao: "Família de paciente", texto: "Os workshops de reinserção deram à minha filha a oportunidade de aprender culinária. Hoje ela trabalha em um restaurante e tem sua própria renda. Gratidão define.", data: "2025-11-03" },
+  { id: 4, nome: "Antônio R.", relacao: "Ex-paciente", texto: "O acompanhamento contínuo pós-alta foi fundamental. Saber que tinha alguém para conversar nos momentos difíceis fez toda a diferença na minha recuperação.", data: "2025-08-18" }
+];
+
+function home_vitrine_init() {
+  home_vitrine_renderProgramas();
+  home_vitrine_renderCampanhas();
+  home_vitrine_renderDepoimentos();
+}
+
+function home_vitrine_renderProgramas() {
+  const grid = document.getElementById('home-programas-grid');
+  if (!grid) return;
+  const corMap = {
+    marca: { bg: 'bg-marca-50', text: 'text-marca-700', border: 'border-marca-200', badge: 'bg-marca-100 text-marca-800' },
+    green: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', badge: 'bg-green-100 text-green-800' },
+    amber: { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200', badge: 'bg-amber-100 text-amber-800' },
+    purple: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200', badge: 'bg-purple-100 text-purple-800' }
+  };
+  const iconeSVG = {
+    calendar: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>',
+    users: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 014 4V7h1.5a2.5 2.5 0 012.5 2.5v.5a6 6 0 01-5.05 5.975A6.5 6.5 0 019.5 18h-1a6.5 6.5 0 01-5.95-4.025A6 6 0 013.5 10V9.5a2.5 2.5 0 012.5-2.5H7V8a4 4 0 014-4.354z"/></svg>',
+    briefcase: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m7 6h.01M12 16h.01"/></svg>',
+    heart: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>'
+  };
+  grid.innerHTML = HOME_PROGRAMAS.map(p => {
+    const c = corMap[p.cor] || corMap.marca;
+    const precoTxt = p.preco > 0 ? `R$ ${p.preco.toLocaleString('pt-BR')}` : 'Gratuito';
+    const gradiente = `bg-gradient-to-br from-${p.cor}-500 to-${p.cor}-600`;
+    return `<div class="card p-6 flex flex-col hover:shadow-lg transition-all cursor-pointer group" onclick="mostrarTela('detalhe-do-programa')">
+      <div class="flex items-start justify-between mb-4">
+        <div class="w-12 h-12 ${c.bg} ${c.text} rounded-xl flex items-center justify-center">
+          ${iconeSVG[p.icone] || iconeSVG.heart}
+        </div>
+        <span class="badge ${c.badge} text-xs font-semibold px-2.5 py-1 rounded-full">${p.vagas} vagas</span>
+      </div>
+      <h3 class="font-display text-lg font-bold text-gray-900 mb-2 group-hover:text-marca-700 transition-colors">${p.nome}</h3>
+      <p class="text-gray-500 text-sm leading-relaxed mb-4 flex-1">${p.descricao}</p>
+      <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wide font-semibold">Investimento</p>
+          <p class="font-display font-bold ${c.text}">${precoTxt}</p>
+        </div>
+        <span class="text-sm text-gray-400 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          ${p.duracao}
+        </span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function home_vitrine_renderCampanhas() {
+  const grid = document.getElementById('home-campanhas-grid');
+  if (!grid) return;
+  grid.innerHTML = HOME_CAMPANHAS.map(c => {
+    const pct = Math.min(c.progresso, 100);
+    const valorArrecadado = c.unidade === 'R
+    </main>
+  </div>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 pointer-events-none" style="max-width:380px"></div>
+
+  <!-- ===== MODAL ===== -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden" onclick="if(event.target===this)fecharModal()">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="flex items-center justify-center min-h-screen p-6">
+      <div id="modal-card" class="relative bg-white rounded-card shadow-dropdown w-full max-w-lg max-h-[80vh] flex flex-col overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-neutro-100">
+          <h3 id="modal-titulo" class="font-display font-700 text-lg text-neutro-800"></h3>
+          <button onclick="fecharModal()" class="p-1.5 rounded-lg hover:bg-neutro-100 transition-colors text-neutro-400 hover:text-neutro-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <div id="modal-corpo" class="p-6 overflow-y-auto"></div>
+        <div id="modal-rodape" class="px-6 py-4 border-t border-neutro-100 flex items-center justify-end gap-2.5"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== ROUTER =====
+    function mostrarTela(id) {
+      document.querySelectorAll('[data-tela]').forEach(function(s){ s.classList.toggle('hidden', s.dataset.tela !== id) });
+      document.querySelectorAll('[data-nav]').forEach(function(b){ b.classList.toggle('ativo', b.dataset.nav === id) });
+      window.scrollTo({ top:0 });
+    }
+    document.addEventListener('DOMContentLoaded', function(){ mostrarTela('home-vitrine') });
+
+    // ===== TOASTS =====
+    var toastTimeouts = {};
+    function toast(mensagem, tipo) {
+      var container = document.getElementById('toast-container');
+      var cores = { ok:'border-l-4 border-marca-500 bg-marca-50', erro:'border-l-4 border-red-500 bg-red-50', info:'border-l-4 border-destaque-500 bg-destaque-50' };
+      var icones = {
+        ok:'<svg class="w-5 h-5 text-marca-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        erro:'<svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        info:'<svg class="w-5 h-5 text-destaque-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+      };
+      var id = Date.now();
+      var el = document.createElement('div');
+      el.id = 'toast-' + id;
+      el.className = 'pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-card shadow-cardHover text-sm text-neutro-700 ' + (cores[tipo]||cores.info) + ' toast-enter';
+      el.innerHTML = icones[tipo]||icones.info + '<span class="font-600 leading-snug">' + mensagem + '</span>';
+      container.appendChild(el);
+      clearTimeout(toastTimeouts[id]);
+      toastTimeouts[id] = setTimeout(function(){
+        el.classList.remove('toast-enter');
+        el.classList.add('toast-exit');
+        setTimeout(function(){ el.remove() }, 300);
+      }, 3000);
+    }
+
+    // ===== MODAL =====
+    function abrirModal(html, titulo) {
+      document.getElementById('modal-titulo').textContent = titulo || '';
+      document.getElementById('modal-corpo').innerHTML = html;
+      document.getElementById('modal-rodape').innerHTML = '';
+      document.getElementById('modal-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function fecharModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape')fecharModal() });
+
+    // ===== FORMATTERS =====
+    function brl(valor) { return 'R$ ' + Number(valor).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) }
+    function dataBR(iso) {
+      if(!iso) return '—';
+      var d = new Date(iso+'T00:00:00');
+      return d.toLocaleDateString('pt-BR');
+    }
+
+    // ===== UTILITIES =====
+    function abrirWhatsApp(fone) {
+      var link = 'https://wa.me/' + fone.replace(/\D/g,'');
+      toast('Abrindo WhatsApp…', 'info');
+      setTimeout(function(){ window.open(link,'_blank') }, 600);
+    }
+    function enviarEmail(dest) {
+      toast('Abrindo cliente de e-mail…', 'info');
+      setTimeout(function(){ window.location.href = 'mailto:'+dest }, 600);
+    }
+    function telefone(dest) {
+      toast('Ligando…', 'info');
+      setTimeout(function(){ window.location.href = 'tel:+55'+dest.replace(/\D/g,'') }, 600);
+    }
+  </script>
+</body>
+</html>
+      ? `R$ ${c.arrecadado.toLocaleString('pt-BR')}`
+      : `${c.arrecadado} ${c.unidade}`;
+    const valorMeta = c.unidade === 'R
+    </main>
+  </div>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2.5 pointer-events-none" style="max-width:380px"></div>
+
+  <!-- ===== MODAL ===== -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 hidden" onclick="if(event.target===this)fecharModal()">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+    <div class="flex items-center justify-center min-h-screen p-6">
+      <div id="modal-card" class="relative bg-white rounded-card shadow-dropdown w-full max-w-lg max-h-[80vh] flex flex-col overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-neutro-100">
+          <h3 id="modal-titulo" class="font-display font-700 text-lg text-neutro-800"></h3>
+          <button onclick="fecharModal()" class="p-1.5 rounded-lg hover:bg-neutro-100 transition-colors text-neutro-400 hover:text-neutro-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <div id="modal-corpo" class="p-6 overflow-y-auto"></div>
+        <div id="modal-rodape" class="px-6 py-4 border-t border-neutro-100 flex items-center justify-end gap-2.5"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== ROUTER =====
+    function mostrarTela(id) {
+      document.querySelectorAll('[data-tela]').forEach(function(s){ s.classList.toggle('hidden', s.dataset.tela !== id) });
+      document.querySelectorAll('[data-nav]').forEach(function(b){ b.classList.toggle('ativo', b.dataset.nav === id) });
+      window.scrollTo({ top:0 });
+    }
+    document.addEventListener('DOMContentLoaded', function(){ mostrarTela('home-vitrine') });
+
+    // ===== TOASTS =====
+    var toastTimeouts = {};
+    function toast(mensagem, tipo) {
+      var container = document.getElementById('toast-container');
+      var cores = { ok:'border-l-4 border-marca-500 bg-marca-50', erro:'border-l-4 border-red-500 bg-red-50', info:'border-l-4 border-destaque-500 bg-destaque-50' };
+      var icones = {
+        ok:'<svg class="w-5 h-5 text-marca-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        erro:'<svg class="w-5 h-5 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        info:'<svg class="w-5 h-5 text-destaque-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
+      };
+      var id = Date.now();
+      var el = document.createElement('div');
+      el.id = 'toast-' + id;
+      el.className = 'pointer-events-auto flex items-start gap-3 px-4 py-3 rounded-card shadow-cardHover text-sm text-neutro-700 ' + (cores[tipo]||cores.info) + ' toast-enter';
+      el.innerHTML = icones[tipo]||icones.info + '<span class="font-600 leading-snug">' + mensagem + '</span>';
+      container.appendChild(el);
+      clearTimeout(toastTimeouts[id]);
+      toastTimeouts[id] = setTimeout(function(){
+        el.classList.remove('toast-enter');
+        el.classList.add('toast-exit');
+        setTimeout(function(){ el.remove() }, 300);
+      }, 3000);
+    }
+
+    // ===== MODAL =====
+    function abrirModal(html, titulo) {
+      document.getElementById('modal-titulo').textContent = titulo || '';
+      document.getElementById('modal-corpo').innerHTML = html;
+      document.getElementById('modal-rodape').innerHTML = '';
+      document.getElementById('modal-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function fecharModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape')fecharModal() });
+
+    // ===== FORMATTERS =====
+    function brl(valor) { return 'R$ ' + Number(valor).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) }
+    function dataBR(iso) {
+      if(!iso) return '—';
+      var d = new Date(iso+'T00:00:00');
+      return d.toLocaleDateString('pt-BR');
+    }
+
+    // ===== UTILITIES =====
+    function abrirWhatsApp(fone) {
+      var link = 'https://wa.me/' + fone.replace(/\D/g,'');
+      toast('Abrindo WhatsApp…', 'info');
+      setTimeout(function(){ window.open(link,'_blank') }, 600);
+    }
+    function enviarEmail(dest) {
+      toast('Abrindo cliente de e-mail…', 'info');
+      setTimeout(function(){ window.location.href = 'mailto:'+dest }, 600);
+    }
+    function telefone(dest) {
+      toast('Ligando…', 'info');
+      setTimeout(function(){ window.location.href = 'tel:+55'+dest.replace(/\D/g,'') }, 600);
+    }
+  </script>
+</body>
+</html>
+      ? `R$ ${c.meta.toLocaleString('pt-BR')}`
+      : `${c.meta} ${c.unidade}`;
+    return `<div class="card p-6 flex flex-col sm:flex-row gap-6">
+      <div class="flex-1">
+        <span class="badge bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full mb-3 inline-block">Ativa</span>
+        <h3 class="font-display text-lg font-bold text-gray-900 mb-2">${c.nome}</h3>
+        <p class="text-gray-500 text-sm mb-4">${c.descricao}</p>
+        <div class="flex items-center gap-4 text-sm text-gray-400">
+          <span class="flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Até ${dataBR(c.dataFim)}
+          </span>
+        </div>
+      </div>
+      <div class="sm:w-56 flex flex-col justify-center">
+        <div class="flex items-center justify-between text-sm mb-2">
+          <span class="text-gray-500">Progresso</span>
+          <span class="font-bold text-marca-700">${pct}%</span>
+        </div>
+        <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden mb-3">
+          <div class="h-full bg-gradient-to-r from-marca-500 to-marca-400 rounded-full transition-all duration-700" style="width:${pct}%"></div>
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <span class="font-semibold text-gray-700">${valorArrecadado}</span>
+          <span class="text-gray-400">de ${valorMeta}</span>
+        </div>
+        <button onclick="home_vitrine_doar()" class="mt-4 w-full py-2.5 bg-marca-700 text-white text-sm font-semibold rounded-lg hover:bg-marca-800 active:scale-95 transition-all">
+          Contribuir
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function home_vitrine_renderDepoimentos() {
+  const grid = document.getElementById('home-depoimentos-grid');
+  if (!grid) return;
+  const cores = ['bg-marca-500', 'bg-green-500', 'bg-amber-500', 'bg-purple-500'];
+  grid.innerHTML = HOME_DEPOIMENTOS.map((d, i) => {
+    const iniciais = d.nome.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+    const cor = cores[i % cores.length];
+    return `<div class="card p-6">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-12 h-12 ${cor} rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+          ${iniciais}
+        </div>
+        <div>
+          <h4 class="font-semibold text-gray-900">${d.nome}</h4>
+          <span class="text-sm text-gray-400">${d.relacao}</span>
+        </div>
+      </div>
+      <div class="relative">
+        <svg class="w-8 h-8 text-marca-200 absolute -top-1 -left-1" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4.995v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+        <p class="text-gray-600 leading-relaxed pl-6">${d.texto}</p>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-100">
+        <span class="text-xs text-gray-400">${dataBR(d.data)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function home_vitrine_doar() {
+  abrirModal(
+    `<div class="space-y-4">
+      <p class="text-gray-600">Escolha o valor da sua doação ou digite um valor personalizado:</p>
+      <div class="grid grid-cols-3 gap-3">
+        <button onclick="home_vitrine_valorDoacao(50)" class="p-4 border-2 border-marca-200 rounded-xl hover:border-marca-500 hover:bg-marca-50 transition-all font-semibold text-marca-700">R$ 50</button>
+        <button onclick="home_vitrine_valorDoacao(100)" class="p-4 border-2 border-marca-200 rounded-xl hover:border-marca-500 hover:bg-marca-50 transition-all font-semibold text-marca-700">R$ 100</button>
+        <button onclick="home_vitrine_valorDoacao(200)" class="p-4 border-2 border-marca-200 rounded-xl hover:border-marca-500 hover:bg-marca-50 transition-all font-semibold text-marca-700">R$ 200</button>
+      </div>
+      <div class="pt-4 border-t border-gray-100">
+        <label class="block text-sm font-medium text-gray-700 mb-2">Valor personalizado (R$)</label>
+        <input type="number" id="home-doacao-valor" placeholder="Digite o valor" min="1" step="1" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-marca-500 focus:border-transparent outline-none" />
+      </div>
+    </div>`,
+    'Fazer Doação'
+  );
+}
+
+function home_vitrine_valorDoacao(valor) {
+  document.getElementById('home-doacao-valor').value = valor;
+  home_vitrine_processarDoacao();
+}
+
+function home_vitrine_processarDoacao() {
+  const input = document.getElementById('home-doacao-valor');
+  const valor = parseFloat(input.value);
+  if (!valor || valor < 1) {
+    toast('Informe um valor válido para a doação.', 'erro');
+    return;
+  }
+  fecharModal();
+  toast(`Doação de ${brl(valor)} registrada com sucesso! Obrigado por sua generosidade.`, 'ok');
+  setTimeout(() => mostrarTela('pagamento-online'), 800);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const tela = document.querySelector('[data-tela="home-vitrine"]');
+  if (tela) {
+    home_vitrine_init();
+  }
+});
+</script>
+
+    <!-- TELAS -->
     </main>
   </div>
 
