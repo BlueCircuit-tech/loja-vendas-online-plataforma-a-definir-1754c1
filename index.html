@@ -3429,6 +3429,216 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
     </script>
 
+    <section data-tela="painel-administrativo" class="hidden">
+        <div class="flex gap-6 flex-wrap">
+            <div class="flex-1 min-w-[320px]">
+                <div class="mb-6">
+                    <h1 class="text-2xl font-display font-bold text-gray-900">Painel Administrativo</h1>
+                    <p class="text-sm text-gray-500 mt-1">Visão geral da comunidade · <span id="data-atual"></span></p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-6" id="kpi-cards">
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('faturamento')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Faturamento do Mês</span>
+                            <div class="w-9 h-9 rounded-lg bg-marca-50 flex items-center justify-center group-hover:bg-marca-100 transition-colors"><svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-gray-900" id="kpi-faturamento">R$ 42.350,00</p>
+                        <div class="flex items-center gap-1 mt-2"><span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">+12,4%</span><span class="text-xs text-gray-400">vs mês anterior</span></div>
+                    </div>
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('inscricoes')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Inscrições Ativas</span>
+                            <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-gray-900" id="kpi-inscricoes">87</p>
+                        <div class="flex items-center gap-1 mt-2"><span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">+8</span><span class="text-xs text-gray-400">esta semana</span></div>
+                    </div>
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('ocupacao')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Taxa de Ocupação</span>
+                            <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center group-hover:bg-amber-100 transition-colors"><svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-gray-900" id="kpi-ocupacao">78%</p>
+                        <div class="w-full bg-gray-100 rounded-full h-2 mt-3"><div class="bg-amber-500 h-2 rounded-full transition-all duration-500" style="width:78%"></div></div>
+                    </div>
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('cadastros')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Novos Cadastros (sem.)</span>
+                            <div class="w-9 h-9 rounded-lg bg-violet-50 flex items-center justify-center group-hover:bg-violet-100 transition-colors"><svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-gray-900" id="kpi-cadastros">12</p>
+                        <div class="flex items-center gap-1 mt-2"><span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">+4</span><span class="text-xs text-gray-400">vs semana anterior</span></div>
+                    </div>
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('ticket')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Ticket Médio</span>
+                            <div class="w-9 h-9 rounded-lg bg-rose-50 flex items-center justify-center group-hover:bg-rose-100 transition-colors"><svg class="w-5 h-5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-gray-900" id="kpi-ticket">R$ 486,90</p>
+                        <div class="flex items-center gap-1 mt-2"><span class="text-xs font-medium text-rose-600 bg-rose-50 px-1.5 py-0.5 rounded">-2,1%</span><span class="text-xs text-gray-400">vs mês anterior</span></div>
+                    </div>
+                    <div class="card cursor-pointer hover:border-marca-200 hover:shadow-md transition-all duration-200 p-5 group" onclick="painel_administrativo_detalhe('documentos')">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-medium text-gray-500 uppercase tracking-wide">Docs Pendentes</span>
+                            <div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors"><svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                        </div>
+                        <p class="text-2xl font-display font-bold text-red-600" id="kpi-docs">7</p>
+                        <div class="flex items-center gap-1 mt-2"><span class="text-xs font-medium text-red-600 bg-red-50 px-1.5 py-0.5 rounded">Ação necessária</span></div>
+                    </div>
+                </div>
+                <div class="card mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div><h2 class="font-display font-semibold text-gray-900">Evolução de Inscrições</h2><p class="text-xs text-gray-400 mt-0.5">Últimos 6 meses</p></div>
+                        <div class="flex gap-1">
+                            <button class="text-xs px-3 py-1.5 rounded-lg bg-marca-50 text-marca-700 font-medium">Inscrições</button>
+                            <button class="text-xs px-3 py-1.5 rounded-lg text-gray-400 hover:bg-gray-50 transition-colors">Cancelamentos</button>
+                        </div>
+                    </div>
+                    <div class="relative w-full overflow-x-auto">
+                        <svg viewBox="0 0 700 220" class="w-full min-w-[500px] h-auto" id="grafico-inscricoes">
+                            <defs><linearGradient id="gradArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.15"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+                            <line x1="50" y1="20" x2="680" y2="20" stroke="#f1f5f9" stroke-width="1"/><line x1="50" y1="65" x2="680" y2="65" stroke="#f1f5f9" stroke-width="1"/><line x1="50" y1="110" x2="680" y2="110" stroke="#f1f5f9" stroke-width="1"/><line x1="50" y1="155" x2="680" y2="155" stroke="#f1f5f9" stroke-width="1"/><line x1="50" y1="190" x2="680" y2="190" stroke="#e2e8f0" stroke-width="1"/>
+                            <text x="42" y="24" text-anchor="end" font-size="10" fill="#94a3b8">50</text><text x="42" y="69" text-anchor="end" font-size="10" fill="#94a3b8">38</text><text x="42" y="114" text-anchor="end" font-size="10" fill="#94a3b8">25</text><text x="42" y="159" text-anchor="end" font-size="10" fill="#94a3b8">13</text><text x="42" y="194" text-anchor="end" font-size="10" fill="#94a3b8">0</text>
+                            <text x="108" y="208" text-anchor="middle" font-size="10" fill="#94a3b8">Jan</text><text x="228" y="208" text-anchor="middle" font-size="10" fill="#94a3b8">Fev</text><text x="348" y="208" text-anchor="middle" font-size="10" fill="#94a3b8">Mar</text><text x="468" y="208" text-anchor="middle" font-size="10" fill="#94a3b8">Abr</text><text x="588" y="208" text-anchor="middle" font-size="10" fill="#94a3b8">Mai</text><text x="680" y="208" text-anchor="middle" font-size="10" fill="#6366f1" font-weight="600">Jun</text>
+                            <path d="M108 155 Q160 140 228 120 Q296 95 348 80 Q416 55 468 40 Q536 25 588 35 Q640 20 680 15 L680 190 L108 190 Z" fill="url(#gradArea)"/>
+                            <polyline points="108,140 228,105 348,78 468,42 536,28 588,32 640,18 680,12" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="108" cy="140" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="228" cy="105" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="348" cy="78" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="468" cy="42" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="536" cy="28" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="588" cy="32" r="4" fill="#fff" stroke="#6366f1" stroke-width="2"/><circle cx="640" cy="18" r="4" fill="#6366f1" stroke="#fff" stroke-width="2"/><circle cx="680" cy="12" r="5" fill="#6366f1" stroke="#fff" stroke-width="2"/>
+                            <text x="540" y="22" font-size="9" fill="#6366f1" font-weight="600">87 inscrições</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div><h2 class="font-display font-semibold text-gray-900">Alertas e Itens que Precisam de Ação</h2><p class="text-xs text-gray-400 mt-0.5">Itens que requerem atenção urgente</p></div>
+                        <div class="flex gap-2">
+                            <button onclick="painel_administrativo_filtrar('todos')" class="text-xs px-3 py-1.5 rounded-lg bg-marca-50 text-marca-700 font-medium transition-colors filtro-btn" data-filtro="todos">Todos</button>
+                            <button onclick="painel_administrativo_filtrar('pagamento')" class="text-xs px-3 py-1.5 rounded-lg text-gray-400 hover:bg-gray-50 transition-colors filtro-btn" data-filtro="pagamento">Pagamentos</button>
+                            <button onclick="painel_administrativo_filtrar('documento')" class="text-xs px-3 py-1.5 rounded-lg text-gray-400 hover:bg-gray-50 transition-colors filtro-btn" data-filtro="documento">Documentos</button>
+                            <button onclick="painel_administrativo_filtrar('vagas')" class="text-xs px-3 py-1.5 rounded-lg text-gray-400 hover:bg-gray-50 transition-colors filtro-btn" data-filtro="vagas">Vagas</button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[600px]">
+                            <thead><tr class="border-b border-gray-100"><th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wide pb-3 pl-3">Tipo</th><th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wide pb-3">Pessoa / Programa</th><th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wide pb-3">Detalhe</th><th class="text-left text-xs font-medium text-gray-400 uppercase tracking-wide pb-3">Prazo</th><th class="text-right text-xs font-medium text-gray-400 uppercase tracking-wide pb-3 pr-3">Ação</th></tr></thead>
+                            <tbody id="tabela-alertas"></tbody>
+                        </table>
+                    </div>
+                    <div id="estado-vazio-alertas" class="hidden text-center py-10">
+                        <div class="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-3"><svg class="w-7 h-7 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+                        <p class="text-sm font-medium text-gray-700">Tudo certo!</p>
+                        <p class="text-xs text-gray-400 mt-1">Nenhum alerta pendente no momento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-80 shrink-0">
+                <div class="card mb-4">
+                    <h2 class="font-display font-semibold text-gray-900 mb-3">Acesso Rápido</h2>
+                    <div class="space-y-2">
+                        <button onclick="mostrarTela('catalogo-de-programas')" class="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all duration-200 group text-left active:scale-[0.98]">
+                            <div class="w-10 h-10 rounded-lg bg-marca-50 flex items-center justify-center group-hover:bg-marca-100 transition-colors"><svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+                            <div><p class="text-sm font-medium text-gray-800">Programas</p><p class="text-xs text-gray-400">Catálogo e edição</p></div>
+                        </button>
+                        <button onclick="mostrarTela('gestao-de-pedidos')" class="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all duration-200 group text-left active:scale-[0.98]">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg></div>
+                            <div><p class="text-sm font-medium text-gray-800">Pedidos</p><p class="text-xs text-gray-400">Inscrições e orçamentos</p></div>
+                        </button>
+                        <button onclick="mostrarTela('relatorios-e-metricas')" class="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all duration-200 group text-left active:scale-[0.98]">
+                            <div class="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center group-hover:bg-amber-100 transition-colors"><svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                            <div><p class="text-sm font-medium text-gray-800">Relatórios</p><p class="text-xs text-gray-400">Métricas e exportação</p></div>
+                        </button>
+                        <button onclick="mostrarTela('pagamento-online')" class="w-full flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-marca-200 hover:bg-marca-50/50 transition-all duration-200 group text-left active:scale-[0.98]">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center group-hover:bg-emerald-100 transition-colors"><svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></div>
+                            <div><p class="text-sm font-medium text-gray-800">Financeiro</p><p class="text-xs text-gray-400">Pagamentos e conciliação</p></div>
+                        </button>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <h2 class="font-display font-semibold text-gray-900 mb-3">Distribuição por Programa</h2>
+                    <div class="flex justify-center mb-3">
+                        <svg viewBox="0 0 160 160" class="w-40 h-40">
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#f1f5f9" stroke-width="24"/>
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#6366f1" stroke-width="24" stroke-dasharray="150 227" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#10b981" stroke-width="24" stroke-dasharray="50 227" stroke-dashoffset="-150" transform="rotate(-90 80 80)"/>
+                            <circle cx="80" cy="80" r="60" fill="none" stroke="#f59e0b" stroke-width="24" stroke-dasharray="27 227" stroke-dashoffset="-200" transform="rotate(-90 80 80)"/>
+                            <text x="80" y="76" text-anchor="middle" font-size="18" font-weight="700" fill="#1e293b">78%</text><text x="80" y="92" text-anchor="middle" font-size="10" fill="#94a3b8">ocupação</text>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-marca-600"></span><span class="text-xs text-gray-600">Desintoxicação</span></div><span class="text-xs font-medium text-gray-800">45%</span></div>
+                        <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-emerald-500"></span><span class="text-xs text-gray-600">Reinserção Social</span></div><span class="text-xs font-medium text-gray-800">22%</span></div>
+                        <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-amber-500"></span><span class="text-xs text-gray-600">Terapia Familiar</span></div><span class="text-xs font-medium text-gray-800">18%</span></div>
+                        <div class="flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-gray-200"></span><span class="text-xs text-gray-600">Acompanhamento</span></div><span class="text-xs font-medium text-gray-800">15%</span></div>
+                    </div>
+                </div>
+                <div class="card bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+                    <h2 class="font-display font-semibold mb-2">Oportunidades</h2>
+                    <p class="text-xs text-gray-400 mb-3">Ações sugeridas pela plataforma</p>
+                    <div class="space-y-2">
+                        <button onclick="mostrarTela('gestao-de-pedidos')" class="w-full text-left p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-xs"><span class="text-amber-400 font-medium">3 pagamentos</span><span class="text-gray-400 block">pendentes há mais de 48h</span></button>
+                        <button onclick="mostrarTela('catalogo-de-programas')" class="w-full text-left p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-xs"><span class="text-amber-400 font-medium">2 programas</span><span class="text-gray-400 block">com vagas quase esgotadas</span></button>
+                        <button onclick="mostrarTela('relatorios-e-metricas')" class="w-full text-left p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-xs"><span class="text-marca-300 font-medium">Relatório mensal</span><span class="text-gray-400 block">disponível para exportação</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function(){
+                const dataAtual = document.getElementById('data-atual');
+                if(dataAtual) dataAtual.textContent = new Date().toLocaleDateString('pt-BR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+                const alertas = [
+                    { tipo:'pagamento', tipoLabel:'Pagamento Pendente', pessoa:'Carlos Eduardo Mendes', programa:'Programa Desintoxicação 90 dias', detalhe:'R$ 650,00 · há 72h', prazo:'Urgente', prazoCor:'text-red-600 bg-red-50', filtro:'pagamento', corIcone:'bg-red-50', iconeCor:'text-red-600' },
+                    { tipo:'documento', tipoLabel:'Documento Ausente', pessoa:'Fernanda Almeida Rocha', programa:'Terapia Familiar', detalve:'RG e comprovante residência', prazo:'3 dias', prazoCor:'text-amber-600 bg-amber-50', filtro:'documento', corIcone:'bg-amber-50', iconeCor:'text-amber-600' },
+                    { tipo:'vagas', tipoLabel:'Vagas Esgotando', pessoa:'Programa Reinserção Social', detalhe:'2 de 20 vagas restantes', prazo:'Esgotando', prazoCor:'text-orange-600 bg-orange-50', filtro:'vagas', corIcone:'bg-orange-50', iconeCor:'text-orange-600' },
+                    { tipo:'pagamento', tipoLabel:'Pagamento Pendente', pessoa:'Ricardo Souza Lima', programa:'Programa Desintoxicação 30 dias', detalhe:'R$ 320,00 · há 96h', prazo:'Crítico', prazoCor:'text-red-600 bg-red-50', filtro:'pagamento', corIcone:'bg-red-50', iconeCor:'text-red-600' },
+                    { tipo:'documento', tipoLabel:'Documento Ausente', pessoa:'Ana Beatriz Campos', programa:'Acompanhamento Contínuo', detalhe:'Exame toxicológico', prazo:'5 dias', prazoCor:'text-amber-600 bg-amber-50', filtro:'documento', corIcone:'bg-amber-50', iconeCor:'text-amber-600' },
+                    { tipo:'documento', tipoLabel:'Documento Ausente', pessoa:'João Pedro Nascimento', programa:'Programa Desintoxicação 90 dias', detalhe:'Autorização judicial', prazo:'1 dia', prazoCor:'text-red-600 bg-red-50', filtro:'documento', corIcone:'bg-red-50', iconeCor:'text-red-600' },
+                    { tipo:'vagas', tipoLabel:'Vagas Esgotando', pessoa:'Terapia Familiar Grupo B', detalhe:'4 de 12 vagas restantes', prazo:'Esgotando', prazoCor:'text-orange-600 bg-orange-50', filtro:'vagas', corIcone:'bg-orange-50', iconeCor:'text-orange-600' },
+                    { tipo:'pagamento', tipoLabel:'Pagamento Pendente', pessoa:'Mariana Costa Oliveira', programa:'Reinserção Social', detalhe:'R$ 480,00 · há 52h', prazo:'Atenção', prazoCor:'text-amber-600 bg-amber-50', filtro:'pagamento', corIcone:'bg-amber-50', iconeCor:'text-amber-600' },
+                ];
+
+                const iconesSVG = {
+                    pagamento: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>',
+                    documento: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
+                    vagas: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>'
+                };
+
+                const iniciais = (nome) => nome.split(' ').map(n=>n[0]).slice(0,2).join('').toUpperCase();
+                const coresAvatar = ['bg-marca-100 text-marca-700','bg-blue-100 text-blue-700','bg-emerald-100 text-emerald-700','bg-amber-100 text-amber-700','bg-violet-100 text-violet-700','bg-rose-100 text-rose-700','bg-teal-100 text-teal-700','bg-orange-100 text-orange-700'];
+                let corIdx = 0;
+
+                function renderTabela(filtro) {
+                    const tbody = document.getElementById('tabela-alertas');
+                    const vazio = document.getElementById('estado-vazio-alertas');
+                    const filtrados = filtro === 'todos' ? alertas : alertas.filter(a => a.filtro === filtro);
+                    document.querySelectorAll('.filtro-btn').forEach(b => { b.className = b.dataset.filtro === filtro ? 'text-xs px-3 py-1.5 rounded-lg bg-marca-50 text-marca-700 font-medium transition-colors filtro-btn' : 'text-xs px-3 py-1.5 rounded-lg text-gray-400 hover:bg-gray-50 transition-colors filtro-btn'; });
+                    if(filtrados.length === 0) { tbody.innerHTML = ''; vazio.classList.remove('hidden'); return; }
+                    vazio.classList.add('hidden');
+                    tbody.innerHTML = filtrados.map((a,i) => {
+                        const c = coresAvatar[(corIdx+i) % coresAvatar.length];
+                        return `<tr class="border-b border-gray-50 hover:bg-gray-50/50 transition-colors group cursor-pointer" onclick="painel_administrativo_abrirAlerta('${a.pessoa.replace(/'/g,"\\'")}','${a.programa.replace(/'/g,"\\'")}','${a.detalhe.replace(/'/g,"\\'")}')">
+                            <td class="py-3 pl-3"><div class="w-8 h-8 rounded-lg ${a.corIcone} flex items-center justify-center ${a.iconeCor}">${iconesSVG[a.tipo]}</div></td>
+                            <td class="py-3"><p class="text-sm font-medium text-gray-800 group-hover:text-marca-700 transition-colors">${a.pessoa}</p><span class="badge ${a.prazoCor}">${a.tipoLabel}</span></td>
+                            <td class="py-3"><p class="text-sm text-gray-500">${a.programa}</p></td>
+                            <td class="py-3"><p class="text-xs text-gray-500">${a.detalhe}</p></td>
+                            <td class="py-3 pr-3 text-right"><span class="text-xs font-medium ${a.prazoCor} px-2 py-1 rounded-full">${a.prazo}</span></td>
+                        </tr>`;
+                    }).join('');
+                }
+                renderTabela('todos');
+                window.painel_administrativo_filtrar = function(f) { renderTabela(f); };
+                window.painel_administrativo_abrirAlerta = function(pessoa, programa, detalhe) {
+                    abrirModal(`<div class="space-y-4"><div><p class="text-sm font-medium text-gray-900">${pessoa}</p><p class="text-xs text-gray-500">${programa}</p></div><div class="bg-gray-50 rounded-xl p-4"><p class="text-sm text-gray-700">${detalhe}</p></div><div class="flex gap-2 pt-2"><button onclick="painel_administrativo_resolver();fecharModal()" class="btn flex-1 bg-marca-600 text-white text-sm py-2.5 rounded-xl font-medium hover:bg-marca-700 transition-colors active:scale-95">Marcar como Resolvido</button><button onclick="fecharModal()" class="btn flex-1 bg-gray-100 text-gray-700 text-sm py-2.5 rounded-xl font-medium hover:bg-gray-200 transition-colors active:scale-95">Fechar</button></div></div>`, 'Detalhes do Alerta');
+                };
+                window.painel_administrativo_resolver = function() { toast('Alerta marcado como resolvido', 'ok'); };
+                window.painel_administrativo_detalhe = function(secao) {
+                    const textos = { faturamento: 'Faturamento do mês: R$ 42.350,00 (crescimento de 12,4%)', inscricoes: '87 inscrições ativas · 8 novos esta semana', ocupacao: 'Taxa de ocupação: 78% · 93 de 120 vagas preenchidas', cadastros: '12 novos cadastros esta semana (vs 8 anterior)', ticket: 'Ticket médio: R$ 486,90 · leve queda de 2,1%', documentos: '7 documentos pendentes · 1 com prazo de 1 dia' };
+                    toast(textos[secao] || secao, 'info');
+                };
+            })();
+        </script>
+    </section>
+
     <!-- TELAS -->
     </main>
   </div>
