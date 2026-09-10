@@ -1711,6 +1711,432 @@ document.addEventListener('DOMContentLoaded', function() {
       </script>
     </section>
 
+    <section data-tela="pagamento-online" class="hidden">
+      <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="mb-8">
+          <nav class="flex items-center gap-2 text-sm text-gray-400 mb-3">
+            <button onclick="mostrarTela('catalogo-de-programas')" class="hover:text-marca-600 transition-colors">Catálogo</button>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <button onclick="mostrarTela('carrinho-de-inscricoes')" class="hover:text-marca-600 transition-colors">Carrinho</button>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-marca-700 font-medium">Pagamento</span>
+          </nav>
+          <h1 class="font-display text-3xl font-bold text-gray-900">Finalizar Pagamento</h1>
+          <p class="text-gray-500 mt-1">Complete os dados abaixo para confirmar sua inscrição nos programas</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 space-y-6">
+            <div class="card p-6">
+              <h2 class="font-display text-lg font-semibold text-gray-900 mb-4">Forma de Pagamento</h2>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="metodos-pagamento">
+                <button onclick="pagamento_online_selecionarMetodo('pix')" data-metodo="pix" class="pagamento-metodo flex flex-col items-center gap-2 p-4 border-2 border-marca-600 bg-marca-50 rounded-xl cursor-pointer transition-all hover:shadow-md active:scale-95">
+                  <svg class="w-7 h-7 text-marca-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M3 12h18M7.5 7.5l9 9M16.5 7.5l-9 9"/></svg>
+                  <span class="text-sm font-semibold text-gray-800">PIX</span>
+                  <span class="text-xs text-green-600 font-medium">Aprovação imediata</span>
+                </button>
+                <button onclick="pagamento_online_selecionarMetodo('boleto')" data-metodo="boleto" class="pagamento-metodo flex flex-col items-center gap-2 p-4 border-2 border-gray-200 bg-white rounded-xl cursor-pointer transition-all hover:shadow-md hover:border-gray-300 active:scale-95">
+                  <svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span class="text-sm font-semibold text-gray-800">Boleto</span>
+                  <span class="text-xs text-gray-400">Até 3 dias úteis</span>
+                </button>
+                <button onclick="pagamento_online_selecionarMetodo('cartao')" data-metodo="cartao" class="pagamento-metodo flex flex-col items-center gap-2 p-4 border-2 border-gray-200 bg-white rounded-xl cursor-pointer transition-all hover:shadow-md hover:border-gray-300 active:scale-95">
+                  <svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                  <span class="text-sm font-semibold text-gray-800">Cartão</span>
+                  <span class="text-xs text-gray-400">Até 12x</span>
+                </button>
+                <button onclick="pagamento_online_selecionarMetodo('transferencia')" data-metodo="transferencia" class="pagamento-metodo flex flex-col items-center gap-2 p-4 border-2 border-gray-200 bg-white rounded-xl cursor-pointer transition-all hover:shadow-md hover:border-gray-300 active:scale-95">
+                  <svg class="w-7 h-7 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                  <span class="text-sm font-semibold text-gray-800">Transferência</span>
+                  <span class="text-xs text-gray-400">Bancária</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="formulario-pagamento" class="hidden">
+              <div id="form-pix" class="pagamento-formulario hidden">
+                <div class="card p-6">
+                  <h3 class="font-display text-lg font-semibold text-gray-900 mb-1">Pagamento via PIX</h3>
+                  <p class="text-sm text-gray-500 mb-5">Escaneie o QR Code ou copie o código PIX. A aprovação é instantânea.</p>
+                  <div class="flex flex-col sm:flex-row items-start gap-6">
+                    <div class="w-44 h-44 bg-white border-2 border-dashed border-marca-300 rounded-xl flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0">
+                      <div class="text-center">
+                        <svg class="w-16 h-16 mx-auto text-marca-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 3v18M3 12h18M7.5 7.5l9 9M16.5 7.5l-9 9"/></svg>
+                        <span class="text-xs text-gray-400">QR Code</span>
+                      </div>
+                    </div>
+                    <div class="flex-1 w-full">
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Chave PIX (CNPJ)</label>
+                      <div class="flex gap-2">
+                        <input type="text" value="14.527.901/0001-88" readonly class="flex-1 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-600 font-mono">
+                        <button onclick="navigator.clipboard.writeText('14527901000188');toast('Chave PIX copiada!','ok')" class="px-4 py-2 bg-marca-100 text-marca-700 rounded-lg text-sm font-medium hover:bg-marca-200 transition-colors active:scale-95 flex-shrink-0">Copiar</button>
+                      </div>
+                      <p class="text-xs text-gray-400 mt-2">Após o pagamento, o sistema confirma automaticamente em até 5 minutos.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="form-boleto" class="pagamento-formulario hidden">
+                <div class="card p-6">
+                  <h3 class="font-display text-lg font-semibold text-gray-900 mb-1">Pagamento via Boleto</h3>
+                  <p class="text-sm text-gray-500 mb-5">O boleto será gerado após a confirmação e enviado por e-mail.</p>
+                  <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
+                    <svg class="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                    <div>
+                      <p class="text-sm font-medium text-amber-800">Prazo de compensação</p>
+                      <p class="text-xs text-amber-600 mt-1">O boleto vence em 3 dias úteis. A confirmação pode levar até 48h após o pagamento.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="form-cartao" class="pagamento-formulario hidden">
+                <div class="card p-6">
+                  <h3 class="font-display text-lg font-semibold text-gray-900 mb-1">Cartão de Crédito</h3>
+                  <p class="text-sm text-gray-500 mb-5">Parcele em até 12x com juros a partir de 1,99% a.m.</p>
+                  <div class="flex items-center gap-4 mb-5">
+                    <span class="text-sm text-gray-600">Bandeiras aceitas:</span>
+                    <div class="flex gap-3">
+                      <span class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700">VISA</span>
+                      <span class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700">Mastercard</span>
+                      <span class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700">Elo</span>
+                      <span class="px-3 py-1 bg-gray-100 rounded text-xs font-bold text-gray-700">Hipercard</span>
+                    </div>
+                  </div>
+                  <div class="space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Número do Cartão</label>
+                      <input type="text" maxlength="19" placeholder="0000 0000 0000 0000" oninput="pagamento_online_mascaraCartao(this)" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Validade</label>
+                        <input type="text" maxlength="5" placeholder="MM/AA" oninput="pagamento_online_mascaraValidade(this)" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                        <input type="text" maxlength="4" placeholder="123" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Nome no Cartão</label>
+                      <input type="text" placeholder="Como impresso no cartão" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm uppercase focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-1">Parcelamento</label>
+                      <select id="parcelamento" onchange="pagamento_online_atualizarParcelas()" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all bg-white">
+                        <option value="1">1x de R$ 4.800,00 sem juros</option>
+                        <option value="2">2x de R$ 2.451,84 (1,99% a.m.)</option>
+                        <option value="3">3x de R$ 1.655,24 (1,99% a.m.)</option>
+                        <option value="6" selected>6x de R$ 866,35 (1,99% a.m.)</option>
+                        <option value="12">12x de R$ 474,56 (1,99% a.m.)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="form-transferencia" class="pagamento-formulario hidden">
+                <div class="card p-6">
+                  <h3 class="font-display text-lg font-semibold text-gray-900 mb-1">Transferência Bancária</h3>
+                  <p class="text-sm text-gray-500 mb-5">Realize a transferência para a conta abaixo e envie o comprovante.</p>
+                  <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 space-y-2">
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">Banco:</span><span class="text-sm font-medium text-gray-800">Banco do Brasil</span></div>
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">Agência:</span><span class="text-sm font-medium text-gray-800">1234-5</span></div>
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">Conta:</span><span class="text-sm font-medium text-gray-800">56789-0</span></div>
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">CNPJ:</span><span class="text-sm font-medium text-gray-800">14.527.901/0001-88</span></div>
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">Favorecido:</span><span class="text-sm font-medium text-gray-800">Associação Comunidade Terapêutica Esperança</span></div>
+                    <div class="flex justify-between"><span class="text-sm text-gray-500">Valor:</span><span class="text-sm font-bold text-marca-700">R$ 4.800,00</span></div>
+                  </div>
+                  <p class="text-xs text-gray-400 mt-3">Envie o comprovante para financeiro@comunidadeesperanca.org.br com o número do pedido no assunto.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <h2 class="font-display text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                Dados do Responsável Financeiro
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Nome Completo <span class="text-red-500">*</span></label>
+                  <input type="text" id="resp-nome" placeholder="Nome completo do responsável" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">CPF <span class="text-red-500">*</span></label>
+                  <input type="text" id="resp-cpf" placeholder="000.000.000-00" maxlength="14" oninput="pagamento_online_mascaraCPF(this)" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">RG</label>
+                  <input type="text" placeholder="00.000.000-0" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">E-mail <span class="text-red-500">*</span></label>
+                  <input type="email" id="resp-email" placeholder="email@exemplo.com" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Telefone <span class="text-red-500">*</span></label>
+                  <input type="text" id="resp-telefone" placeholder="(00) 00000-0000" maxlength="15" oninput="pagamento_online_mascaraTelefone(this)" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <h2 class="font-display text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243A8 8 0 1117.657 16.657z"/><circle cx="12" cy="11" r="1.5" fill="currentColor"/></svg>
+                Endereço de Cobrança
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">CEP</label>
+                  <input type="text" placeholder="00000-000" maxlength="9" oninput="pagamento_online_mascaraCEP(this)" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Logradouro</label>
+                  <input type="text" placeholder="Rua, Av., etc." class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Número</label>
+                  <input type="text" placeholder="Número" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
+                  <input type="text" placeholder="Apto, Bloco, etc." class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Bairro</label>
+                  <input type="text" placeholder="Bairro" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
+                  <input type="text" placeholder="Cidade" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                  <select class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all bg-white">
+                    <option>SP</option><option>RJ</option><option>MG</option><option>PR</option><option>RS</option><option>SC</option><option>BA</option><option>PE</option><option>CE</option><option>GO</option><option>DF</option><option>ES</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <h2 class="font-display text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <svg class="w-5 h-5 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Nota Fiscal e Recibo de Doação
+              </h2>
+              <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                <div class="flex items-start gap-3">
+                  <svg class="w-6 h-6 text-emerald-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  <div>
+                    <p class="text-sm font-semibold text-emerald-800">Benefício Fiscal para Doações</p>
+                    <p class="text-xs text-emerald-600 mt-2 leading-relaxed">Por se tratar de uma entidade de utilidade pública, você pode deduzir até <strong>6% da renda tributável</strong> no Imposto de Renda. Ao final do pagamento, você receberá um <strong>Recibo de Doação</strong> com CNPJ e dados válidos para a Receita Federal.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Razão Social (para nota fiscal)</label>
+                <input type="text" placeholder="Deixe em branco para usar o nome do responsável" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-marca-500 transition-all">
+              </div>
+              <div class="mt-4 flex items-center gap-2">
+                <input type="checkbox" id="aceito-termos" class="w-4 h-4 text-marca-600 border-gray-300 rounded focus:ring-marca-500">
+                <label for="aceito-termos" class="text-sm text-gray-600 cursor-pointer">Li e aceito os <button type="button" onclick="abrirModal('<div class=\'space-y-3 text-sm text-gray-600\'><p><strong>Termos de Uso</strong></p><p>Os serviços são prestados pela Associação Comunidade Terapêutica Esperança, inscrita no CNPJ 14.527.901/0001-88.</p><p>Os valores pagos correspondem a programas terapêuticos de tratamento e recuperação. O cancelamento pode ser solicitado em até 7 dias após a inscrição, com reembolso integral.</p><p>O recibo de doação emitido é válido para fins de dedução no Imposto de Renda Pessoa Física, conforme Lei 9.532/97.</p></div>','Termos de Uso')" class="text-marca-600 hover:underline">termos de uso</button> e a <button type="button" onclick="abrirModal('<div class=\'space-y-3 text-sm text-gray-600\'><p><strong>Política de Privacidade</strong></p><p>Seus dados são armazenados com segurança e utilizados exclusivamente para a gestão dos programas terapêuticos e comunicação institucional.</p><p>Não compartilhamos dados com terceiros. Você pode solicitar a exclusão dos dados a qualquer momento.</p></div>','Política de Privacidade')" class="text-marca-600 hover:underline">política de privacidade</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-1">
+            <div class="sticky top-8">
+              <div class="card p-6">
+                <h3 class="font-display text-lg font-semibold text-gray-900 mb-4">Resumo do Pedido</h3>
+                <div class="space-y-4" id="resumo-pedido">
+                  <div class="flex gap-3">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">Programa Recuperação Total</p>
+                      <p class="text-xs text-gray-500">Inscrição + Material Didático</p>
+                      <p class="text-sm font-bold text-gray-900 mt-1">R$ 3.200,00</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.747 5.754 20 7.5 20s3.332.477 3.332 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 3.332 1.253v13C19.832 19.747 18.247 20 16.5 20c-1.746 0-3.332-.477-3.332-1.253"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">Kit Educacional Familiar</p>
+                      <p class="text-xs text-gray-500">Material de apoio familiar</p>
+                      <p class="text-sm font-bold text-gray-900 mt-1">R$ 1.100,00</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center flex-shrink-0">
+                      <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-sm font-medium text-gray-900 truncate">Oficina de Arteterapia</p>
+                      <p class="text-xs text-gray-500">4 sessões semanais — Abril</p>
+                      <p class="text-sm font-bold text-gray-900 mt-1">R$ 500,00</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="border-t border-gray-100 mt-4 pt-4 space-y-2">
+                  <div class="flex justify-between text-sm"><span class="text-gray-500">Subtotal</span><span class="text-gray-800">R$ 4.800,00</span></div>
+                  <div class="flex justify-between text-sm"><span class="text-gray-500">Desconto doador</span><span class="text-green-600">- R$ 0,00</span></div>
+                  <div class="flex justify-between text-sm"><span class="text-gray-500">Taxa de serviço</span><span class="text-gray-800">Grátis</span></div>
+                  <div class="border-t border-gray-100 pt-3 flex justify-between items-center">
+                    <span class="font-semibold text-gray-900">Total</span>
+                    <span class="text-xl font-bold text-marca-700" id="valor-total">R$ 4.800,00</span>
+                  </div>
+                </div>
+                <button onclick="pagamento_online_confirmar()" id="btn-confirmar-pagamento" class="btn w-full mt-5 py-3.5 bg-marca-700 text-white rounded-xl font-semibold text-base active:scale-95 transition-all hover:bg-marca-800 flex items-center justify-center gap-2">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  Confirmar Pagamento
+                </button>
+                <div class="mt-4 flex items-center justify-center gap-3 text-xs text-gray-400">
+                  <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Criptografado</span>
+                  <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>PCI DSS</span>
+                  <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Seguro</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-confirmacao" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center animate-[scaleIn_0.3s_ease-out]">
+          <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+            <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-gray-900 mb-2">Pagamento Confirmado!</h3>
+          <p class="text-gray-500 text-sm mb-5">Sua inscrição foi realizada com sucesso. O número do pedido é:</p>
+          <div class="bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl py-4 px-6 mb-5">
+            <p class="text-2xl font-bold text-marca-700 font-mono" id="numero-pedido">#PED-20250315-0042</p>
+          </div>
+          <div class="space-y-2 mb-6 text-sm text-left bg-gray-50 rounded-lg p-4">
+            <div class="flex justify-between"><span class="text-gray-500">Pedido:</span><span class="font-medium" id="confirm-pedido">#PED-20250315-0042</span></div>
+            <div class="flex justify-between"><span class="text-gray-500">Data:</span><span class="font-medium" id="confirm-data">15/03/2025</span></div>
+            <div class="flex justify-between"><span class="text-gray-500">Valor:</span><span class="font-medium text-marca-700" id="confirm-valor">R$ 4.800,00</span></div>
+            <div class="flex justify-between"><span class="text-gray-500">Forma:</span><span class="font-medium" id="confirm-metodo">PIX</span></div>
+          </div>
+          <p class="text-xs text-gray-400 mb-5">Um e-mail de confirmação foi enviado para o responsável financeiro. O recibo de doação estará disponível em até 5 dias úteis.</p>
+          <div class="flex gap-3">
+            <button onclick="mostrarTela('meus-pedidos');document.getElementById('modal-confirmacao').classList.add('hidden')" class="btn flex-1 py-3 bg-marca-700 text-white rounded-xl font-semibold active:scale-95 transition-all hover:bg-marca-800">Ver Meus Pedidos</button>
+            <button onclick="mostrarTela('home-vitrine');document.getElementById('modal-confirmacao').classList.add('hidden')" class="btn flex-1 py-3 border-2 border-gray-200 text-gray-700 rounded-xl font-semibold active:scale-95 transition-all hover:bg-gray-50">Voltar ao Início</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-carregando" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-8 text-center">
+          <div class="w-16 h-16 border-4 border-marca-200 border-t-marca-600 rounded-full animate-spin mx-auto mb-5"></div>
+          <p class="font-display text-lg font-semibold text-gray-900 mb-1">Processando Pagamento</p>
+          <p class="text-sm text-gray-500">Aguarde um momento, não feche esta página...</p>
+        </div>
+      </div>
+
+      <script>
+        let pagamento_online_metodoSelecionado = null;
+
+        function pagamento_online_selecionarMetodo(metodo) {
+          pagamento_online_metodoSelecionado = metodo;
+          document.querySelectorAll('.pagamento-metodo').forEach(b => {
+            b.classList.remove('border-marca-600','bg-marca-50');
+            b.classList.add('border-gray-200','bg-white');
+          });
+          const btn = document.querySelector(`[data-metodo="${metodo}"]`);
+          if (btn) { btn.classList.remove('border-gray-200','bg-white'); btn.classList.add('border-marca-600','bg-marca-50'); }
+
+          document.getElementById('formulario-pagamento').classList.remove('hidden');
+          document.querySelectorAll('.pagamento-formulario').forEach(f => f.classList.add('hidden'));
+          const formMap = { pix:'form-pix', boleto:'form-boleto', cartao:'form-cartao', transferencia:'form-transferencia' };
+          const el = document.getElementById(formMap[metodo]);
+          if (el) el.classList.remove('hidden');
+        }
+
+        function pagamento_online_mascaraCPF(el) {
+          let v = el.value.replace(/\D/g,'').slice(0,11);
+          v = v.replace(/(\d{3})(\d)/,'$1.$2');
+          v = v.replace(/(\d{3})(\d)/,'$1.$2');
+          v = v.replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+          el.value = v;
+        }
+
+        function pagamento_online_mascaraTelefone(el) {
+          let v = el.value.replace(/\D/g,'').slice(0,11);
+          v = v.replace(/^(\d{2})(\d)/,'($1) $2');
+          v = v.replace(/(\d{5})(\d)/,'$1-$2');
+          el.value = v;
+        }
+
+        function pagamento_online_mascaraCEP(el) {
+          let v = el.value.replace(/\D/g,'').slice(0,8);
+          v = v.replace(/(\d{5})(\d)/,'$1-$2');
+          el.value = v;
+        }
+
+        function pagamento_online_mascaraCartao(el) {
+          let v = el.value.replace(/\s/g,'').replace(/\D/g,'').slice(0,16);
+          v = v.replace(/(\d{4})(?=\d)/g,'$1 ');
+          el.value = v;
+        }
+
+        function pagamento_online_mascaraValidade(el) {
+          let v = el.value.replace(/\D/g,'').slice(0,4);
+          if (v.length >= 2) v = v.slice(0,2) + '/' + v.slice(2);
+          el.value = v;
+        }
+
+        function pagamento_online_atualizarParcelas() {
+          const sel = document.getElementById('parcelamento');
+          const valorBase = 4800;
+          const taxa = 0.0199;
+          const parcelas = parseInt(sel.value);
+          const valorParcela = parcelas === 1 ? valorBase : (valorBase * Math.pow(1 + taxa, parcelas) / parcelas);
+          const total = valorParcela * parcelas;
+          const options = sel.options;
+          options[0].textContent = parcelas === 1 ? '1x de R$ ' + valorBase.toLocaleString('pt-BR',{minimumFractionDigits:2}) + ' sem juros' : options[0].textContent;
+        }
+
+        function pagamento_online_confirmar() {
+          if (!pagamento_online_metodoSelecionado) {
+            toast('Selecione uma forma de pagamento','erro');
+            return;
+          }
+          const nome = document.getElementById('resp-nome').value.trim();
+          const cpf = document.getElementById('resp-cpf').value.trim();
+          const email = document.getElementById('resp-email').value.trim();
+          const telefone = document.getElementById('resp-telefone').value.trim();
+          if (!nome || !cpf || !email || !telefone) {
+            toast('Preencha todos os campos obrigatórios do responsável financeiro','erro');
+            return;
+          }
+          const aceito = document.getElementById('aceito-termos').checked;
+          if (!aceito) {
+            toast('Aceite os termos de uso para continuar','erro');
+            return;
+          }
+          const carregando = document.getElementById('modal-carregando');
+          carregando.classList.remove('hidden');
+          setTimeout(() => {
+            carregando.classList.add('hidden');
+            const numeroPedido = '#PED-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + String(Math.floor(Math.random()*9999)).padStart(4,'0');
+            document.getElementById('numero-pedido').textContent = numeroPedido;
+            document.getElementById('confirm-pedido').textContent = numeroPedido;
+            document.getElementById('confirm-data').textContent = new Date().toLocaleDateString('pt-BR');
+            const metodoLabel = {pix:'PIX',boleto:'Boleto Bancário',cartao:'Cartão de Crédito',transferencia:'Transferência Bancária'};
+            document.getElementById('confirm-metodo').textContent = metodoLabel[pagamento_online_metodoSelecionado] || '—';
+            document.getElementById('modal-confirmacao').classList.remove('hidden');
+            toast('Pagamento confirmado com sucesso!','ok');
+          }, 2500);
+        }
+      </script>
+    </section>
+
     <!-- TELAS -->
     </main>
   </div>
