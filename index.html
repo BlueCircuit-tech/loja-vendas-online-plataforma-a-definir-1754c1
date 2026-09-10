@@ -663,6 +663,411 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+    <section data-tela="catalogo-de-programas" class="hidden">
+    <div class="flex gap-6 animate-enter">
+        <!-- Sidebar de Filtros -->
+        <aside class="w-64 shrink-0">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sticky top-6">
+                <h3 class="font-display font-bold text-gray-800 text-base mb-4 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-marca-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                    Filtros
+                </h3>
+                <div class="space-y-3">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Categoria</p>
+                        <div id="catalogo-filtros-categoria" class="space-y-1.5">
+                            <label class="flex items-center gap-2.5 cursor-pointer group">
+                                <input type="checkbox" value="tratamento" class="catalogo-filtro-cat rounded border-gray-300 text-marca-600 focus:ring-marca-500" checked>
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span class="text-sm text-gray-700 group-hover:text-marca-700 transition-colors">Tratamento</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer group">
+                                <input type="checkbox" value="acolhimento" class="catalogo-filtro-cat rounded border-gray-300 text-marca-600 focus:ring-marca-500" checked>
+                                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                                <span class="text-sm text-gray-700 group-hover:text-marca-700 transition-colors">Acolhimento</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer group">
+                                <input type="checkbox" value="familia" class="catalogo-filtro-cat rounded border-gray-300 text-marca-600 focus:ring-marca-500" checked>
+                                <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                                <span class="text-sm text-gray-700 group-hover:text-marca-700 transition-colors">Família</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer group">
+                                <input type="checkbox" value="eventos" class="catalogo-filtro-cat rounded border-gray-300 text-marca-600 focus:ring-marca-500" checked>
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                <span class="text-sm text-gray-700 group-hover:text-marca-700 transition-colors">Eventos</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer group">
+                                <input type="checkbox" value="doacoes" class="catalogo-filtro-cat rounded border-gray-300 text-marca-600 focus:ring-marca-500" checked>
+                                <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+                                <span class="text-sm text-gray-700 group-hover:text-marca-700 transition-colors">Doações</span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Valor máximo</p>
+                        <input type="range" id="catalogo-filtro-preco" min="0" max="12000" step="100" value="12000" class="w-full accent-marca-600">
+                        <div class="flex justify-between text-xs text-gray-400 mt-1">
+                            <span>Grátis</span>
+                            <span id="catalogo-preco-label">R$ 12.000</span>
+                        </div>
+                    </div>
+                    <hr class="border-gray-100">
+                    <div>
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Vagas disponíveis</p>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="catalogo-filtro-vagas" class="rounded border-gray-300 text-marca-600 focus:ring-marca-500">
+                            <span class="text-sm text-gray-700">Apenas com vagas</span>
+                        </label>
+                    </div>
+                    <button onclick="catalogo_de_programas_limparFiltros()" class="text-xs text-marca-600 hover:text-marca-800 font-medium mt-2 transition-colors">Limpar filtros</button>
+                </div>
+            </div>
+        </aside>
+        <!-- Conteúdo Principal -->
+        <div class="flex-1 min-w-0">
+            <!-- Cabeçalho da Tela -->
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <h1 class="font-display text-2xl font-bold text-gray-900">Catálogo de Programas</h1>
+                    <p class="text-gray-500 mt-1 text-sm">Encontre programas de tratamento, acolhimento e apoio para você e sua família</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="catalogo_de_programas_abrirCarrinho()" class="relative flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-4 py-2.5 hover:border-marca-300 hover:shadow-md transition-all active:scale-95 group">
+                        <svg class="w-5 h-5 text-gray-600 group-hover:text-marca-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                        <span class="text-sm font-medium text-gray-700 group-hover:text-marca-700 transition-colors">Inscrições</span>
+                        <span id="catalogo-cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-marca-600 text-white text-xs font-bold rounded-full flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Barra de Pesquisa e Ordenação -->
+            <div class="flex items-center gap-3 mb-5">
+                <div class="relative flex-1">
+                    <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input type="text" id="catalogo-busca" placeholder="Buscar programas, tratamentos, eventos..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-marca-500/20 focus:border-marca-400 transition-all placeholder:text-gray-400">
+                </div>
+                <select id="catalogo-ordem" class="bg-white border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-marca-500/20 focus:border-marca-400 cursor-pointer">
+                    <option value="nome">Nome A-Z</option>
+                    <option value="preco-asc">Menor preço</option>
+                    <option value="preco-desc">Maior preço</option>
+                    <option value="duracao">Duração</option>
+                    <option value="vagas">Mais vagas</option>
+                </select>
+            </div>
+            <!-- Contador de resultados -->
+            <p id="catalogo-resultados" class="text-xs text-gray-400 mb-4"></p>
+            <!-- Grid de Programas -->
+            <div id="catalogo-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+            <!-- Estado vazio -->
+            <div id="catalogo-vazio" class="hidden text-center py-16">
+                <svg class="w-16 h-16 text-gray-200 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <p class="text-gray-500 font-medium">Nenhum programa encontrado</p>
+                <p class="text-gray-400 text-sm mt-1">Tente ajustar os filtros ou a busca</p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal do Carrinho -->
+    <div id="catalogo-carrinho-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="catalogo_de_programas_fecharCarrinho()"></div>
+        <div class="absolute right-0 top-0 h-full w-96 bg-white shadow-2xl flex flex-col animate-[slideIn_0.3s_ease-out]">
+            <div class="flex items-center justify-between p-5 border-b border-gray-100">
+                <h3 class="font-display font-bold text-lg text-gray-900">Inscrições</h3>
+                <button onclick="catalogo_de_programas_fecharCarrinho()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div id="catalogo-carrinho-itens" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+            <div id="catalogo-carrinho-vazio" class="flex-1 flex flex-col items-center justify-center p-5">
+                <svg class="w-12 h-12 text-gray-200 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                <p class="text-gray-500 text-sm">Nenhuma inscrição</p>
+                <p class="text-gray-400 text-xs mt-1">Adicione programas para começar</p>
+            </div>
+            <div id="catalogo-carrinho-footer" class="hidden border-t border-gray-100 p-5 space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-500">Total</span>
+                    <span id="catalogo-carrinho-total" class="font-display font-bold text-xl text-gray-900"></span>
+                </div>
+                <button onclick="catalogo_de_programas_irCarrinho()" class="w-full bg-marca-600 text-white font-semibold py-3 rounded-xl hover:bg-marca-700 active:scale-[0.98] transition-all shadow-md shadow-marca-600/20">Ver Inscrições</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function() {
+        const programas = [
+            { id: 1, nome: 'Desintoxicação Assistida', categoria: 'tratamento', duracao: '90 dias', duracaoDias: 90, preco: 0, vagas: 8, credenciado: true, selo: 'CREMESP', descricao: 'Programa estruturado de desintoxicação com acompanhamento médico 24h, equipe multidisciplinar e plano individualizado de recuperação.', beneficios: ['Acompanhamento médico diário', 'Psicoterapia individual semanal', 'Atividades terapêuticas grupais', 'Acompanhamento nutricional'], cor: 'emerald', icon: 'medical', dataInicio: '2026-02-15' },
+            { id: 2, nome: 'Reabilitação Longo Prazo', categoria: 'tratamento', duracao: '12 meses', duracaoDias: 365, preco: 2500, vagas: 5, credenciado: true, selo: 'SENAD', descricao: 'Tratamento residencial de longo prazo com foco na reconstrução de vínculos e reinserção social. Moradia inclusiva e terapia contínua.', beneficios: ['Moradia inclusiva', 'Terapia ocupacional', 'Orientação profissional', 'Atividades de reinserção'], cor: 'teal', icon: 'home', dataInicio: '2026-03-01' },
+            { id: 3, nome: 'Acolhimento Emergencial', categoria: 'acolhimento', duracao: '7 dias', duracaoDias: 7, preco: 0, vagas: 12, credenciado: true, selo: 'MDS', descricao: 'Acolhimento imediato para pessoas em situação de vulnerabilidade. Alimentação, suporte emocional e encaminhamento para tratamento.', beneficios: ['Acolhimento 24h', 'Alimentação inclusa', 'Suporte emocional', 'Encaminhamento terapêutico'], cor: 'sky', icon: 'shield', dataInicio: '2026-01-20' },
+            { id: 4, nome: 'Grupo de Apoio Familiar', categoria: 'familia', duracao: '8 semanas', duracaoDias: 56, preco: 0, vagas: 20, credenciado: true, selo: 'CONEN', descricao: 'Espaço semanal para familiares de pessoas em tratamento. Psicoeducação, rede de apoio e ferramentas para lidar com a situação.', beneficios: ['Encontros semanais', 'Psicoeducação familiar', 'Rede de apoio', 'Mediação familiar'], cor: 'purple', icon: 'users', dataInicio: '2026-02-01' },
+            { id: 5, nome: 'Workshop de Prevenção', categoria: 'eventos', duracao: '1 dia', duracaoDias: 1, preco: 45, vagas: 50, credenciado: false, selo: null, descricao: 'Workshop educativo aberto à comunidade sobre prevenção ao uso de substâncias. Palestras, dinâmicas e troca de experiências.', beneficios: ['Palestras especializadas', 'Dinâmicas de grupo', 'Material educativo', 'Certificado de participação'], cor: 'amber', icon: 'calendar', dataInicio: '2026-02-10' },
+            { id: 6, nome: 'Terapia Ocupacional', categoria: 'tratamento', duracao: '6 meses', duracaoDias: 180, preco: 800, vagas: 15, credenciado: true, selo: 'CREFITO', descricao: 'Programa de terapia ocupacional para resgate da autonomia e reinserção produtiva. Artesanato, horticultura e atividades manuais.', beneficios: ['Oficinas terapêuticas', 'Horticultura terapêutica', 'Artesanato', 'Avaliação profissional'], cor: 'emerald', icon: 'tool', dataInicio: '2026-02-20' },
+            { id: 7, nome: 'Doação de Cesta Básica', categoria: 'doacoes', duracao: 'Pontual', duracaoDias: 0, preco: 120, vagas: 999, credenciado: false, selo: null, descricao: 'Doe uma cesta básica para famílias em acompanhamento pela comunidade terapêutica. Cada cesta alimenta uma família por um mês.', beneficios: ['Alimentação para 1 mês', 'Apoio direto à família', 'Transparência no uso', 'Comprovante de doação'], cor: 'rose', icon: 'heart', dataInicio: null },
+            { id: 8, nome: 'Retiro de Recuperação', categoria: 'eventos', duracao: '3 dias', duracaoDias: 3, preco: 0, vagas: 30, credenciado: true, selo: 'SENAD', descricao: 'Retiro imersivo em meio à natureza para pessoas em fase de recuperação. Meditação, trilhas, terapias alternativas e convivência terapêutica.', beneficios: ['Hospedagem inclusa', 'Alimentação vegetariana', 'Meditação guiada', 'Terapias alternativas'], cor: 'teal', icon: 'tree', dataInicio: '2026-03-15' },
+            { id: 9, nome: 'Atendimento Psicológico Individual', categoria: 'tratamento', duracao: '12 sessões', duracaoDias: 84, preco: 3500, vagas: 10, credenciado: true, selo: 'CRP', descricao: 'Pacote de 12 sessões de psicoterapia individual com profissional credenciado. Atendimento online ou presencial.', beneficios: ['12 sessões individuais', 'Agendamento flexível', 'Online ou presencial', 'Relatórios de progresso'], cor: 'purple', icon: 'chat', dataInicio: '2026-02-05' },
+            { id: 10, nome: 'Apadrinhamento Solidário', categoria: 'doacoes', duracao: 'Contínuo', duracaoDias: 0, preco: 200, vagas: 999, credenciado: false, selo: null, descricao: 'Seja um padrinho de uma pessoa em tratamento. Contribuição mensal que garante acompanhamento terapêutico e suporte material.', beneficios: ['Acompanhamento mensal', 'Relatórios de evolução', 'Contato com a pessoa', 'Impacto social direto'], cor: 'amber', icon: 'star', dataInicio: null }
+        ];
+
+        let carrinho = [];
+        let filtrosAtivos = { categorias: ['tratamento','acolhimento','familia','eventos','doacoes'], precoMax: 12000, soComVagas: false, busca: '' };
+        let ordemAtual = 'nome';
+
+        const svgIcons = {
+            medical: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>',
+            home: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>',
+            shield: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+            users: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 014 4V7h1.5a2.5 2.5 0 012.5 2.5v.5a4 4 0 01-4 4H15v1.5a2.5 2.5 0 01-2.5 2.5h-.5a4 4 0 01-4-4V7H4.5A2.5 2.5 0 012 4.5v-.5a4 4 0 014-4h6z"/></svg>',
+            calendar: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>',
+            tool: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+            heart: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"/></svg>',
+            tree: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 7v8a3 3 0 003 3h2.5a2.5 2.5 0 002.5-2.5V13h2a3 3 0 003-3V7M6 7l2-2m0 0l2 2m-2-2v12"/></svg>',
+            chat: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-4.272C3.512 14.718 3 13.278 3 11.5 3 7.582 7.03 4 12 4s9 3.582 9 7.5z"/></svg>',
+            star: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>',
+            clock: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+            users: '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>'
+        };
+
+        const corMap = { emerald: { bg: 'bg-emerald-50', border: 'border-emerald-200', icon: 'text-emerald-600', badge: 'bg-emerald-100 text-emerald-700', text: 'text-emerald-600', dot: 'bg-emerald-500', ring: 'ring-emerald-500/20' }, teal: { bg: 'bg-teal-50', border: 'border-teal-200', icon: 'text-teal-600', badge: 'bg-teal-100 text-teal-700', text: 'text-teal-600', dot: 'bg-teal-500', ring: 'ring-teal-500/20' }, sky: { bg: 'bg-sky-50', border: 'border-sky-200', icon: 'text-sky-600', badge: 'bg-sky-100 text-sky-700', text: 'text-sky-600', dot: 'bg-sky-500', ring: 'ring-sky-500/20' }, purple: { bg: 'bg-purple-50', border: 'border-purple-200', icon: 'text-purple-600', badge: 'bg-purple-100 text-purple-700', text: 'text-purple-600', dot: 'bg-purple-500', ring: 'ring-purple-500/20' }, amber: { bg: 'bg-amber-50', border: 'border-amber-200', icon: 'text-amber-600', badge: 'bg-amber-100 text-amber-700', text: 'text-amber-600', dot: 'bg-amber-500', ring: 'ring-amber-500/20' }, rose: { bg: 'bg-rose-50', border: 'border-rose-200', icon: 'text-rose-600', badge: 'bg-rose-100 text-rose-700', text: 'text-rose-600', dot: 'bg-rose-500', ring: 'ring-rose-500/20' } };
+
+        function catalogo_de_programas_avaliar(programa) {
+            if (!filtrosAtivos.categorias.includes(programa.categoria)) return false;
+            if (programa.preco > filtrosAtivos.precoMax) return false;
+            if (filtrosAtivos.soComVagas && programa.vagas < 1) return false;
+            if (filtrosAtivos.busca) {
+                const b = filtrosAtivos.busca.toLowerCase();
+                const match = programa.nome.toLowerCase().includes(b) || programa.categoria.toLowerCase().includes(b) || programa.descricao.toLowerCase().includes(b) || (programa.selo && programa.selo.toLowerCase().includes(b));
+                if (!match) return false;
+            }
+            return true;
+        }
+
+        function catalogo_de_programas_ordenar(lista) {
+            const c = [...lista];
+            switch(ordemAtual) {
+                case 'preco-asc': return c.sort((a,b) => a.preco - b.preco);
+                case 'preco-desc': return c.sort((a,b) => b.preco - a.preco);
+                case 'duracao': return c.sort((a,b) => a.duracaoDias - b.duracaoDias);
+                case 'vagas': return c.sort((a,b) => b.vagas - a.vagas);
+                default: return c.sort((a,b) => a.nome.localeCompare(b.nome));
+            }
+        }
+
+        function catalogo_de_programas_render() {
+            const filtrados = catalogo_de_programas_ordenar(programas.filter(catalogo_de_programas_avaliar));
+            const grid = document.getElementById('catalogo-grid');
+            const vazio = document.getElementById('catalogo-vazio');
+            const resultados = document.getElementById('catalogo-resultados');
+            resultados.textContent = `${filtrados.length} programa${filtrados.length !== 1 ? 's' : ''} encontrado${filtrados.length !== 1 ? 's' : ''}`;
+            if (filtrados.length === 0) { grid.classList.add('hidden'); vazio.classList.remove('hidden'); return; }
+            grid.classList.remove('hidden'); vazio.classList.add('hidden');
+            grid.innerHTML = filtrados.map(p => {
+                const c = corMap[p.cor];
+                const noCarrinho = carrinho.find(i => i.id === p.id);
+                const precoLabel = p.preco === 0 ? '<span class="text-emerald-600 font-bold">Gratuito</span>' : `<span class="font-bold text-gray-900">${brl(p.preco)}</span>`;
+                const credenciadoBadge = p.credenciado ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Credenciado</span>` : '';
+                const corIconBg = p.cor === 'emerald' ? 'bg-emerald-100' : p.cor === 'teal' ? 'bg-teal-100' : p.cor === 'sky' ? 'bg-sky-100' : p.cor === 'purple' ? 'bg-purple-100' : p.cor === 'amber' ? 'bg-amber-100' : 'bg-rose-100';
+                const corIconText = p.cor === 'emerald' ? 'text-emerald-600' : p.cor === 'teal' ? 'text-teal-600' : p.cor === 'sky' ? 'text-sky-600' : p.cor === 'purple' ? 'text-purple-600' : p.cor === 'amber' ? 'text-amber-600' : 'text-rose-600';
+                const categoriaLabel = p.categoria.charAt(0).toUpperCase() + p.categoria.slice(1);
+                const corGradient = p.cor === 'emerald' ? 'from-emerald-500 to-teal-400' : p.cor === 'teal' ? 'from-teal-500 to-cyan-400' : p.cor === 'sky' ? 'from-sky-500 to-blue-400' : p.cor === 'purple' ? 'from-purple-500 to-indigo-400' : p.cor === 'amber' ? 'from-amber-500 to-orange-400' : 'from-rose-500 to-pink-400';
+                return `
+                <div class="card bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:border-marca-200/50 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col group" onclick="catalogo_de_programas_abrirDetalhe(${p.id})">
+                    <div class="relative h-36 bg-gradient-to-br ${corGradient} flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-black/5"></div>
+                        <div class="relative w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white">
+                            ${svgIcons[p.icon]}
+                        </div>
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white/90 backdrop-blur-sm ${corIconText}">${categoriaLabel}</span>
+                        </div>
+                        <div class="absolute top-3 right-3 flex gap-1.5">
+                            ${credenciadoBadge}
+                        </div>
+                        <div class="absolute bottom-3 right-3">
+                            <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-white/90 backdrop-blur-sm ${c.text} flex items-center gap-1">
+                                ${svgIcons.users}<span class="text-gray-600">${p.vagas === 999 ? 'Vagas ilimitadas' : p.vagas + ' vaga' + (p.vagas !== 1 ? 's' : '')}</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="font-display font-bold text-gray-900 text-base leading-tight pr-2 group-hover:text-marca-700 transition-colors">${p.nome}</h3>
+                        </div>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="flex items-center gap-1 text-xs text-gray-500">${svgIcons.clock}${p.duracao}</span>
+                        </div>
+                        <p class="text-xs text-gray-400 leading-relaxed line-clamp-2 mb-4 flex-1">${p.descricao}</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50">
+                            <div class="text-sm">${precoLabel}</div>
+                            ${p.preco > 0 ? `<button onclick="event.stopPropagation();catalogo_de_programas_addCarrinho(${p.id})" class="text-sm font-semibold text-marca-600 hover:text-marca-800 flex items-center gap-1 transition-colors active:scale-95">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                Inscrição
+                            </button>` : `<button onclick="event.stopPropagation();catalogo_de_programas_addCarrinho(${p.id})" class="text-sm font-semibold text-marca-600 hover:text-marca-800 flex items-center gap-1 transition-colors active:scale-95">Inscrever-se →</button>`}
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function catalogo_de_programas_addCarrinho(id) {
+            const p = programas.find(x => x.id === id);
+            if (!p) return;
+            if (carrinho.find(x => x.id === id)) { toast('Este programa já está nas inscrições', 'info'); return; }
+            carrinho.push({ id: p.id, nome: p.nome, preco: p.preco, cor: p.cor, categoria: p.categoria });
+            catalogo_de_programas_atualizarCarrinhoUI();
+            toast(`"${p.nome}" adicionado às inscrições`, 'ok');
+        }
+
+        function catalogo_de_programas_removerCarrinho(id) {
+            const p = programas.find(x => x.id === id);
+            carrinho = carrinho.filter(x => x.id !== id);
+            catalogo_de_programas_atualizarCarrinhoUI();
+            if (p) toast(`"${p.nome}" removido das inscrições`, 'info');
+        }
+
+        function catalogo_de_programas_atualizarCarrinhoUI() {
+            const badge = document.getElementById('catalogo-cart-badge');
+            badge.textContent = carrinho.length;
+            badge.classList.toggle('hidden', carrinho.length === 0);
+            const itensEl = document.getElementById('catalogo-carrinho-itens');
+            const vazioEl = document.getElementById('catalogo-carrinho-vazio');
+            const footerEl = document.getElementById('catalogo-carrinho-footer');
+            if (carrinho.length === 0) {
+                itensEl.classList.add('hidden'); vazioEl.classList.remove('hidden'); footerEl.classList.add('hidden');
+            } else {
+                itensEl.classList.remove('hidden'); vazioEl.classList.add('hidden'); footerEl.classList.remove('hidden');
+                const total = carrinho.reduce((s, i) => s + i.preco, 0);
+                document.getElementById('catalogo-carrinho-total').textContent = total === 0 ? 'Gratuito' : brl(total);
+                itensEl.innerHTML = carrinho.map(item => {
+                    const c = corMap[item.cor];
+                    return `
+                    <div class="flex items-center gap-3 p-3 ${c.bg} rounded-xl border ${c.border}">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-${item.cor}-400 to-${item.cor}-600 flex items-center justify-center text-white shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-gray-800 truncate">${item.nome}</p>
+                            <p class="text-xs ${c.text} font-medium">${item.preco === 0 ? 'Gratuito' : brl(item.preco)}</p>
+                        </div>
+                        <button onclick="catalogo_de_programas_removerCarrinho(${item.id})" class="p-1.5 hover:bg-white/60 rounded-lg transition-colors shrink-0">
+                            <svg class="w-4 h-4 text-gray-400 hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        function catalogo_de_programas_abrirCarrinho() {
+            const modal = document.getElementById('catalogo-carrinho-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function catalogo_de_programas_fecharCarrinho() {
+            document.getElementById('catalogo-carrinho-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        function catalogo_de_programas_irCarrinho() {
+            catalogo_de_programas_fecharCarrinho();
+            mostrarTela('carrinho-de-inscricoes');
+        }
+
+        function catalogo_de_programas_abrirDetalhe(id) {
+            const p = programas.find(x => x.id === id);
+            if (!p) return;
+            const c = corMap[p.cor];
+            const precoLabel = p.preco === 0 ? '<span class="text-emerald-600 font-bold text-2xl">Gratuito</span>' : `<span class="font-bold text-gray-900 text-2xl">${brl(p.preco)}</span>`;
+            const credenciadoBadge = p.credenciado ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>${p.selo || 'Credenciado'}</span>` : '';
+            const btnAction = p.preco > 0
+                ? `<button onclick="catalogo_de_programas_addCarrinho(${p.id});catalogo_de_programas_fecharCarrinho();" class="flex-1 bg-marca-600 text-white font-semibold py-3 rounded-xl hover:bg-marca-700 active:scale-[0.98] transition-all shadow-md shadow-marca-600/20">Inscrever-se</button>`
+                : `<button onclick="catalogo_de_programas_addCarrinho(${p.id});catalogo_de_programas_fecharCarrinho();" class="flex-1 bg-marca-600 text-white font-semibold py-3 rounded-xl hover:bg-marca-700 active:scale-[0.98] transition-all shadow-md shadow-marca-600/20">Inscrever-se Gratuitamente</button>`;
+            abrirModal(`
+                <div class="space-y-5">
+                    <div class="h-40 rounded-xl bg-gradient-to-br ${c.bg} ${c.text} flex items-center justify-center">
+                        <div class="w-16 h-16 bg-white/40 backdrop-blur-sm rounded-2xl flex items-center justify-center">${svgIcons[p.icon]}</div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                            <span class="px-2.5 py-0.5 rounded-lg text-xs font-bold ${c.badge}">${p.categoria.charAt(0).toUpperCase() + p.categoria.slice(1)}</span>
+                            ${credenciadoBadge}
+                        </div>
+                        <h2 class="font-display font-bold text-xl text-gray-900">${p.nome}</h2>
+                    </div>
+                    <p class="text-sm text-gray-600 leading-relaxed">${p.descricao}</p>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 ${c.bg} rounded-xl">
+                            <p class="text-xs text-gray-500 mb-1">Duração</p>
+                            <p class="text-sm font-bold text-gray-800">${p.duracao}</p>
+                        </div>
+                        <div class="text-center p-3 ${c.bg} rounded-xl">
+                            <p class="text-xs text-gray-500 mb-1">Valor</p>
+                            <p class="text-sm font-bold text-gray-800">${p.preco === 0 ? 'Gratuito' : brl(p.preco)}</p>
+                        </div>
+                        <div class="text-center p-3 ${c.bg} rounded-xl">
+                            <p class="text-xs text-gray-500 mb-1">Vagas</p>
+                            <p class="text-sm font-bold text-gray-800">${p.vagas === 999 ? 'Ilimitadas' : p.vagas}</p>
+                        </div>
+                    </div>
+                    ${p.dataInicio ? `<div class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Início: ${dataBR(p.dataInicio)}</div>` : ''}
+                    <div>
+                        <h4 class="font-display font-semibold text-gray-800 text-sm mb-2">Benefícios inclusos</h4>
+                        <ul class="space-y-1.5">${p.beneficios.map(b => `<li class="flex items-start gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>${b}</li>`).join('')}</ul>
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        ${btnAction}
+                        <button onclick="catalogo_de_programas_fecharCarrinho()" class="px-6 py-3 border border-gray-200 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">Fechar</button>
+                    </div>
+                </div>
+            `, p.nome);
+        }
+
+        function catalogo_de_programas_limparFiltros() {
+            filtrosAtivos = { categorias: ['tratamento','acolhimento','familia','eventos','doacoes'], precoMax: 12000, soComVagas: false, busca: '' };
+            document.querySelectorAll('.catalogo-filtro-cat').forEach(cb => cb.checked = true);
+            document.getElementById('catalogo-filtro-preco').value = 12000;
+            document.getElementById('catalogo-preco-label').textContent = 'R$ 12.000';
+            document.getElementById('catalogo-filtro-vagas').checked = false;
+            document.getElementById('catalogo-busca').value = '';
+            document.getElementById('catalogo-ordem').value = 'nome';
+            ordemAtual = 'nome';
+            catalogo_de_programas_render();
+            toast('Filtros limpos', 'info');
+        }
+
+        function catalogo_de_programas_aplicarFiltros() {
+            filtrosAtivos.categorias = Array.from(document.querySelectorAll('.catalogo-filtro-cat:checked')).map(cb => cb.value);
+            filtrosAtivos.precoMax = parseInt(document.getElementById('catalogo-filtro-preco').value);
+            filtrosAtivos.soComVagas = document.getElementById('catalogo-filtro-vagas').checked;
+            filtrosAtivos.busca = document.getElementById('catalogo-busca').value.trim();
+            catalogo_de_programas_render();
+        }
+
+        document.querySelectorAll('.catalogo-filtro-cat').forEach(cb => cb.addEventListener('change', catalogo_de_programas_aplicarFiltros));
+        document.getElementById('catalogo-filtro-preco').addEventListener('input', function() {
+            document.getElementById('catalogo-preco-label').textContent = this.value == 0 ? 'Grátis' : this.value == 12000 ? 'R$ 12.000' : 'R$ ' + parseInt(this.value).toLocaleString('pt-BR');
+            catalogo_de_programas_aplicarFiltros();
+        });
+        document.getElementById('catalogo-filtro-vagas').addEventListener('change', catalogo_de_programas_aplicarFiltros);
+        document.getElementById('catalogo-busca').addEventListener('input', function() {
+            filtrosAtivos.busca = this.value.trim();
+            catalogo_de_programas_render();
+        });
+        document.getElementById('catalogo-ordem').addEventListener('change', function() {
+            ordemAtual = this.value;
+            catalogo_de_programas_render();
+        });
+
+        catalogo_de_programas_render();
+
+        // Disponibiliza no escopo global para onclick inline
+        window['catalogo_de_programas_addCarrinho'] = catalogo_de_programas_addCarrinho;
+        window['catalogo_de_programas_removerCarrinho'] = catalogo_de_programas_removerCarrinho;
+        window['catalogo_de_programas_abrirCarrinho'] = catalogo_de_programas_abrirCarrinho;
+        window['catalogo_de_programas_fecharCarrinho'] = catalogo_de_programas_fecharCarrinho;
+        window['catalogo_de_programas_irCarrinho'] = catalogo_de_programas_irCarrinho;
+        window['catalogo_de_programas_abrirDetalhe'] = catalogo_de_programas_abrirDetalhe;
+        window['catalogo_de_programas_limparFiltros'] = catalogo_de_programas_limparFiltros;
+        window['catalogo_de_programas_aplicarFiltros'] = catalogo_de_programas_aplicarFiltros;
+    })();
+    </script>
+</section>
+
     <!-- TELAS -->
     </main>
   </div>
