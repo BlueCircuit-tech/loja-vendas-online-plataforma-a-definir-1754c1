@@ -3782,6 +3782,330 @@ document.addEventListener('DOMContentLoaded', function() {
                 var c = m[status] || 'bg-gray-100 text-gray-600 border-gray-200';
                 return '<span class="badge ' + c + ' text-xs px-2.5 py-1
 
+    <section data-tela="relatorios-e-metricas" class="hidden">
+  <div class="animate-entrance">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="font-display text-3xl font-bold text-gray-900">Relatórios e Métricas</h1>
+        <p class="mt-1 text-gray-500">Visão consolidada dos indicadores da comunidade terapêutica</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <select id="periodo-comparativo" onchange="relatorios_e_metricas_alterarPeriodo(this.value)" class="card border border-gray-200 rounded-lg px-3 py-2 text-sm font-body bg-white">
+          <option value="mes">Último mês</option>
+          <option value="trimestre">Último trimestre</option>
+          <option value="semestre">Último semestre</option>
+          <option value="ano">Último ano</option>
+        </select>
+        <button onclick="relatorios_e_metricas_exportar('pdf')" class="btn bg-marca-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-marca-700 active:scale-95 transition-all flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Exportar PDF
+        </button>
+        <button onclick="relatorios_e_metricas_exportar('csv')" class="btn bg-white text-gray-700 border border-gray-200 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 active:scale-95 transition-all flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          CSV
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-5 mb-8">
+      <div class="card p-5 rounded-xl border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Receita por Programa</p>
+            <p class="font-display text-2xl font-bold text-gray-900 mt-1" id="kpi-receita">R$ 284.500</p>
+            <p class="text-sm text-green-600 mt-1 flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"/></svg>+12,4%</p>
+          </div>
+          <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="card p-5 rounded-xl border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Taxa de Evasão</p>
+            <p class="font-display text-2xl font-bold text-gray-900 mt-1">8,3%</p>
+            <p class="text-sm text-green-600 mt-1 flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"/></svg>-2,1%</p>
+          </div>
+          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="card p-5 rounded-xl border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Recuperação Pós-tratamento</p>
+            <p class="font-display text-2xl font-bold text-gray-900 mt-1">76,5%</p>
+            <p class="text-sm text-green-600 mt-1 flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"/></svg>+5,2%</p>
+          </div>
+          <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="card p-5 rounded-xl border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs font-medium text-gray-400 uppercase tracking-wide">Taxa de Ocupação</p>
+            <p class="font-display text-2xl font-bold text-gray-900 mt-1">91,2%</p>
+            <p class="text-sm text-amber-600 mt-1 flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V3a1 1 0 012 0v9.586l2.293-2.293a1 1 0 011.414 0z"/></svg>-1,8%</p>
+          </div>
+          <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card rounded-xl border border-gray-100 p-6 mb-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="font-display text-lg font-semibold text-gray-900">Receita Mensal por Programa</h2>
+        <div class="flex items-center gap-4 text-sm">
+          <span class="flex items-center gap-1"><span class="w-3 h-3 bg-marca-600 rounded"></span>2024</span>
+          <span class="flex items-center gap-1"><span class="w-3 h-3 bg-marca-200 rounded"></span>2023</span>
+        </div>
+      </div>
+      <svg viewBox="0 0 700 200" class="w-full h-48">
+        <line x1="50" y1="20" x2="50" y2="170" stroke="#e5e7eb" stroke-width="1"/>
+        <line x1="50" y1="170" x2="690" y2="170" stroke="#e5e7eb" stroke-width="1"/>
+        <line x1="50" y1="130" x2="690" y2="130" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="50" y1="90" x2="690" y2="90" stroke="#f3f4f6" stroke-width="1"/>
+        <line x1="50" y1="50" x2="690" y2="50" stroke="#f3f4f6" stroke-width="1"/>
+        <text x="45" y="174" text-anchor="end" font-size="9" fill="#9ca3af">R$0</text>
+        <text x="45" y="94" text-anchor="end" font-size="9" fill="#9ca3af">R$75k</text>
+        <text x="45" y="54" text-anchor="end" font-size="9" fill="#9ca3af">R$150k</text>
+        <polygon points="120,140 190,120 260,105 330,110 400,85 470,70 540,60 610,45 610,170 120,170" fill="#0d9488" opacity="0.08" stroke="#0d9488" stroke-width="2"/>
+        <polygon points="120,150 190,145 260,140 330,135 400,130 470,125 540,120 610,115 610,170 120,170" fill="#99f6e4" opacity="0.3" stroke="#5eead4" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="120" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Jan</text>
+        <text x="190" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Fev</text>
+        <text x="260" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Mar</text>
+        <text x="330" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Abr</text>
+        <text x="400" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Mai</text>
+        <text x="470" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Jun</text>
+        <text x="540" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Jul</text>
+        <text x="610" y="185" text-anchor="middle" font-size="9" fill="#6b7280">Ago</text>
+        <circle cx="400" cy="85" r="4" fill="#0d9488" class="cursor-pointer" onclick="relatorios_e_metricas_mostrarDetalhe('maio')"/>
+        <circle cx="610" cy="45" r="4" fill="#0d9488" class="cursor-pointer" onclick="relatorios_e_metricas_mostrarDetalhe('agosto')"/>
+      </svg>
+    </div>
+
+    <div class="card rounded-xl border border-gray-100 mb-8">
+      <div class="flex border-b border-gray-100">
+        <button onclick="relatorios_e_metricas_abrirAba('financeiro')" id="aba-financeiro" class="aba-ativa px-6 py-3 text-sm font-medium text-marca-600 border-b-2 border-marca-600 hover:bg-marca-50 transition-colors">Financeiro</button>
+        <button onclick="relatorios_e_metricas_abrirAba('operacional')" id="aba-operacional" class="px-6 py-3 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:bg-gray-50 transition-colors">Operacional</button>
+        <button onclick="relatorios_e_metricas_abrirAba('social')" id="aba-social" class="px-6 py-3 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:bg-gray-50 transition-colors">Social</button>
+      </div>
+
+      <div id="conteudo-financeiro" class="aba-conteudo p-6">
+        <div class="grid grid-cols-3 gap-5 mb-6">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Receita no período</p>
+            <p class="font-display text-xl font-bold text-gray-900">R$ 284.500</p>
+            <p class="text-sm text-green-600 mt-1">+12,4% vs período anterior</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Método mais usado</p>
+            <p class="font-display text-xl font-bold text-gray-900">PIX</p>
+            <p class="text-sm text-gray-500 mt-1">48% dos pagamentos</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Ticket médio</p>
+            <p class="font-display text-xl font-bold text-gray-900">R$ 3.850</p>
+            <p class="text-sm text-green-600 mt-1">+8,1% vs período anterior</p>
+          </div>
+        </div>
+        <h3 class="font-display font-semibold text-gray-900 mb-4">Métodos de Pagamento</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3"><div class="w-24 text-sm text-gray-600">PIX</div><div class="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-marca-500 rounded-full" style="width:48%"></div></div><span class="text-sm font-medium text-gray-700 w-16 text-right">48%</span></div>
+          <div class="flex items-center gap-3"><div class="w-24 text-sm text-gray-600">Cartão</div><div class="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-marca-400 rounded-full" style="width:32%"></div></div><span class="text-sm font-medium text-gray-700 w-16 text-right">32%</span></div>
+          <div class="flex items-center gap-3"><div class="w-24 text-sm text-gray-600">Boleto</div><div class="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-marca-300 rounded-full" style="width:15%"></div></div><span class="text-sm font-medium text-gray-700 w-16 text-right">15%</span></div>
+          <div class="flex items-center gap-3"><div class="w-24 text-sm text-gray-600">Transferência</div><div class="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-marca-200 rounded-full" style="width:5%"></div></div><span class="text-sm font-medium text-gray-700 w-16 text-right">5%</span></div>
+        </div>
+      </div>
+
+      <div id="conteudo-operacional" class="aba-conteudo hidden p-6">
+        <div class="grid grid-cols-3 gap-5 mb-6">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Taxa de ocupação</p>
+            <p class="font-display text-xl font-bold text-gray-900">91,2%</p>
+            <p class="text-sm text-amber-600 mt-1">-1,8% vs mês anterior</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Tempo médio de espera</p>
+            <p class="font-display text-xl font-bold text-gray-900">4,3 dias</p>
+            <p class="text-sm text-green-600 mt-1">-1,2 dias (melhora)</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Vagas disponíveis</p>
+            <p class="font-display text-xl font-bold text-gray-900">18</p>
+            <p class="text-sm text-gray-500 mt-1">de 206 totais</p>
+          </div>
+        </div>
+        <h3 class="font-display font-semibold text-gray-900 mb-4">Tempo de Espera por Vaga (dias)</h3>
+        <svg viewBox="0 0 700 120" class="w-full h-28">
+          <line x1="50" y1="20" x2="50" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="50" y1="100" x2="690" y2="100" stroke="#e5e7eb" stroke-width="1"/>
+          <rect x="70" y="60" width="40" height="40" rx="4" fill="#0d9488" opacity="0.8"/><text x="90" y="85" text-anchor="middle" font-size="11" fill="white" font-weight="bold">6</text>
+          <rect x="130" y="72" width="40" height="28" rx="4" fill="#0d9488" opacity="0.7"/><text x="150" y="89" text-anchor="middle" font-size="11" fill="white" font-weight="bold">5</text>
+          <rect x="190" y="50" width="40" height="50" rx="4" fill="#0d9488" opacity="0.8"/><text x="210" y="78" text-anchor="middle" font-size="11" fill="white" font-weight="bold">7</text>
+          <rect x="250" y="70" width="40" height="30" rx="4" fill="#0d9488" opacity="0.7"/><text x="270" y="88" text-anchor="middle" font-size="11" fill="white" font-weight="bold">5</text>
+          <rect x="310" y="35" width="40" height="65" rx="4" fill="#0d9488" opacity="0.9"/><text x="330" y="72" text-anchor="middle" font-size="11" fill="white" font-weight="bold">9</text>
+          <rect x="370" y="55" width="40" height="45" rx="4" fill="#0d9488" opacity="0.75"/><text x="390" y="80" text-anchor="middle" font-size="11" fill="white" font-weight="bold">6</text>
+          <text x="90" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Jan</text>
+          <text x="150" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Fev</text>
+          <text x="210" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Mar</text>
+          <text x="270" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Abr</text>
+          <text x="330" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Mai</text>
+          <text x="390" y="115" text-anchor="middle" font-size="9" fill="#6b7280">Jun</text>
+        </svg>
+      </div>
+
+      <div id="conteudo-social" class="aba-conteudo hidden p-6">
+        <div class="grid grid-cols-3 gap-5 mb-6">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Famílias atendidas</p>
+            <p class="font-display text-xl font-bold text-gray-900">342</p>
+            <p class="text-sm text-green-600 mt-1">+28 este mês</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Follow-ups realizados</p>
+            <p class="font-display text-xl font-bold text-gray-900">1.284</p>
+            <p class="text-sm text-green-600 mt-1">Taxa de conclusão: 94%</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-500 mb-1">Grupos de apoio ativos</p>
+            <p class="font-display text-xl font-bold text-gray-900">12</p>
+            <p class="text-sm text-gray-500 mt-1">8 presenciais, 4 online</p>
+          </div>
+        </div>
+        <h3 class="font-display font-semibold text-gray-900 mb-4">Acompanhamentos por Tipo</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <svg class="w-10 h-10 text-marca-600" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#e5e7eb" stroke-width="6"/><circle cx="20" cy="20" r="16" fill="none" stroke="#0d9488" stroke-width="6" stroke-dasharray="75 100" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg>
+            <div><p class="text-sm font-medium text-gray-700">Acompanhamento familiar</p><p class="text-lg font-bold text-gray-900">75%</p></div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <svg class="w-10 h-10 text-marca-600" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#e5e7eb" stroke-width="6"/><circle cx="20" cy="20" r="16" fill="none" stroke="#0d9488" stroke-width="6" stroke-dasharray="60 100" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg>
+            <div><p class="text-sm font-medium text-gray-700">Terapia individual</p><p class="text-lg font-bold text-gray-900">60%</p></div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <svg class="w-10 h-10 text-marca-600" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#e5e7eb" stroke-width="6"/><circle cx="20" cy="20" r="16" fill="none" stroke="#0d9488" stroke-width="6" stroke-dasharray="45 100" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg>
+            <div><p class="text-sm font-medium text-gray-700">Grupo terapêutico</p><p class="text-lg font-bold text-gray-900">45%</p></div>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+            <svg class="w-10 h-10 text-marca-600" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#e5e7eb" stroke-width="6"/><circle cx="20" cy="20" r="16" fill="none" stroke="#0d9488" stroke-width="6" stroke-dasharray="30 100" stroke-linecap="round" transform="rotate(-90 20 20)"/></svg>
+            <div><p class="text-sm font-medium text-gray-700">Acompanhamento espiritual</p><p class="text-lg font-bold text-gray-900">30%</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card rounded-xl border border-gray-100 p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-display text-lg font-semibold text-gray-900">Inscrições por Programa</h2>
+        <div class="relative">
+          <input type="text" id="busca-relatorio" placeholder="Buscar programa..." oninput="relatorios_e_metricas_buscar(this.value)" class="pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-64 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent">
+          <svg class="w-4 h-4 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead><tr class="border-b border-gray-100 text-left">
+            <th class="pb-3 font-medium text-gray-500">Programa</th>
+            <th class="pb-3 font-medium text-gray-500">Inscritos</th>
+            <th class="pb-3 font-medium text-gray-500">Receita</th>
+            <th class="pb-3 font-medium text-gray-500">Taxa Conclusão</th>
+            <th class="pb-3 font-medium text-gray-500">Evasão</th>
+            <th class="pb-3 font-medium text-gray-500">Status</th>
+            <th class="pb-3 font-medium text-gray-500 text-right">Ação</th>
+          </tr></thead>
+          <tbody id="tabela-relatorios"></tbody>
+        </table>
+      </div>
+      <div id="estado-vazio-relatorios" class="hidden text-center py-12">
+        <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-gray-500">Nenhum programa encontrado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const relatorios_e_metricas_dados = [
+  { nome: "Desintoxicação 90 dias", inscritos: 45, receita: 173250, conclusao: 82, evasao: 10, status: "ativo" },
+  { nome: "Reabilitação Residencial", inscritos: 32, receita: 256000, conclusao: 78, evasao: 7, status: "ativo" },
+  { nome: "Ambulatorial Integrado", inscritos: 68, receita: 95200, conclusao: 71, evasao: 12, status: "ativo" },
+  { nome: "Programa Familiar", inscritos: 28, receita: 33600, conclusao: 88, evasao: 5, status: "ativo" },
+  { nome: "Pós-tratamento Acompanhado", inscritos: 22, receita: 33000, conclusao: 90, evasao: 8, status: "ativo" },
+  { nome: "Grupo de Apoio Mutuo", inscritos: 54, receita: 0, conclusao: 65, evasao: 15, status: "gratuito" }
+];
+
+function relatorios_e_metricas_buscar(termo) {
+  const tbody = document.getElementById("tabela-relatorios");
+  const vazio = document.getElementById("estado-vazio-relatorios");
+  const filtrados = relatorios_e_metricas_dados.filter(p => p.nome.toLowerCase().includes(termo.toLowerCase()));
+  tbody.innerHTML = filtrados.map((p, i) => {
+    const statusBadge = p.status === "gratuito" ? '<span class="badge badge-green">Gratuito</span>' : '<span class="badge badge-blue">Ativo</span>';
+    const receitaStr = p.receita === 0 ? "Gratuito" : "R$ " + p.receita.toLocaleString("pt-BR");
+    const corEvasao = p.evasao <= 8 ? "text-green-600" : p.evasao <= 12 ? "text-amber-600" : "text-red-600";
+    return `<tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors cursor-pointer" onclick="relatorios_e_metricas_mostrarDetalhePrograma(${i})">
+      <td class="py-3 font-medium text-gray-900">${p.nome}</td>
+      <td class="py-3 text-gray-600">${p.inscritos}</td>
+      <td class="py-3 text-gray-600">${receitaStr}</td>
+      <td class="py-3"><div class="flex items-center gap-2"><div class="w-20 h-2 bg-gray-100 rounded-full overflow-hidden"><div class="h-full bg-teal-500 rounded-full" style="width:${p.conclusao}%"></div></div><span class="text-gray-700">${p.conclusao}%</span></div></td>
+      <td class="py-3 ${corEvasao} font-medium">${p.evasao}%</td>
+      <td class="py-3">${statusBadge}</td>
+      <td class="py-3 text-right"><button class="text-marca-600 hover:text-marca-700 font-medium">Ver detalhes</button></td>
+    </tr>`;
+  }).join("");
+  vazio.classList.toggle("hidden", filtrados.length > 0);
+}
+
+function relatorios_e_metricas_abrirAba(aba) {
+  document.querySelectorAll("[class*='aba-ativa']").forEach(el => { el.classList.remove("aba-ativa", "text-marca-600", "border-marca-600"); el.classList.add("text-gray-500", "border-transparent"); });
+  const alvo = document.getElementById("aba-" + aba);
+  alvo.classList.add("aba-ativa", "text-marca-600", "border-marca-600");
+  alvo.classList.remove("text-gray-500", "border-transparent");
+  document.querySelectorAll(".aba-conteudo").forEach(el => el.classList.add("hidden"));
+  document.getElementById("conteudo-" + aba).classList.remove("hidden");
+}
+
+function relatorios_e_metricas_exportar(formato) {
+  toast(`Relatório exportado em ${formato.toUpperCase()} com sucesso!`, "ok");
+}
+
+function relatorios_e_metricas_alterarPeriodo(periodo) {
+  const labels = { mes: "último mês", trimestre: "último trimestre", semestre: "último semestre", ano: "último ano" };
+  toast(`Período atualizado: ${labels[periodo]}`, "info");
+}
+
+function relatorios_e_metricas_mostrarDetalhePrograma(idx) {
+  const p = relatorios_e_metricas_dados[idx];
+  const receita = p.receita === 0 ? "Programa gratuito" : "R$ " + p.receita.toLocaleString("pt-BR");
+  abrirModal(`
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-display text-xl font-bold text-gray-900">${p.nome}</h3>
+        <span class="badge ${p.status === "gratuito" ? "badge-green" : "badge-blue"}">${p.status === "gratuito" ? "Gratuito" : "Ativo"}</span>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="p-3 bg-gray-50 rounded-lg"><p class="text-xs text-gray-500">Inscritos</p><p class="font-bold text-gray-900">${p.inscritos}</p></div>
+        <div class="p-3 bg-gray-50 rounded-lg"><p class="text-xs text-gray-500">Receita Total</p><p class="font-bold text-gray-900">${receita}</p></div>
+        <div class="p-3 bg-gray-50 rounded-lg"><p class="text-xs text-gray-500">Taxa de Conclusão</p><p class="font-bold text-teal-600">${p.conclusao}%</p></div>
+        <div class="p-3 bg-gray-50 rounded-lg"><p class="text-xs text-gray-500">Taxa de Evasão</p><p class="font-bold ${p.evasao <= 8 ? "text-green-600" : "text-amber-600"}">${p.evasao}%</p></div>
+      </div>
+      <button onclick="fecharModal(); toast('Relatório detalhado gerado!', 'ok')" class="btn w-full bg-marca-600 text-white py-2 rounded-lg font-medium hover:bg-marca-700 active:scale-95 transition-all">Gerar Relatório Completo</button>
+    </div>`, `Detalhes — ${p.nome}`);
+}
+
+function relatorios_e_metricas_mostrarDetalhe(mes) {
+  toast(`Detalhes de ${mes}: receita consolidada no período`, "info");
+}
+
+relatorios_e_metricas_buscar("");
+</script>
+
     <!-- TELAS -->
     </main>
   </div>
