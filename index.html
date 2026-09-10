@@ -3639,6 +3639,149 @@ document.addEventListener('DOMContentLoaded', function() {
         </script>
     </section>
 
+    <section data-tela="gestao-de-pedidos" class="hidden">
+        <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <symbol id="ico-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+                <symbol id="ico-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+                <symbol id="ico-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+                <symbol id="ico-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+                <symbol id="ico-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></symbol>
+                <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+                <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+                <symbol id="ico-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+                <symbol id="ico-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></symbol>
+                <symbol id="ico-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
+                <symbol id="ico-dollar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
+                <symbol id="ico-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+                <symbol id="ico-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+                <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+                <symbol id="ico-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+                <symbol id="ico-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+                <symbol id="ico-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+                <symbol id="ico-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+            </defs>
+        </svg>
+
+        <div class="space-y-6">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <h1 class="text-2xl font-display font-bold text-gray-900">Gestão de Pedidos</h1>
+                    <p class="text-sm text-gray-500 mt-1">Gerencie inscrições, acompanhe pagamentos e confirme participações</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="gestao_de_pedidos_exportar()" class="btn flex items-center gap-2 text-sm bg-white border border-gray-300 text-gray-700 px-4 py-2.5 rounded-xl hover:bg-gray-50 active:scale-95 transition-all">
+                        <svg class="w-4 h-4"><use href="#ico-download"/></svg>Exportar
+                    </button>
+                    <button onclick="mostrarTela('catalogo-de-programas')" class="btn flex items-center gap-2 text-sm bg-marca-700 text-white px-4 py-2.5 rounded-xl hover:bg-marca-800 active:scale-95 transition-all shadow-sm">
+                        <svg class="w-4 h-4"><use href="#ico-plus"/></svg>Novo Pedido
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="card p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-marca-50 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-marca-700"><use href="#ico-clipboard"/></svg></div>
+                    <div><p class="text-xs text-gray-500 uppercase tracking-wide font-medium">Total de Pedidos</p><p class="text-2xl font-display font-bold text-gray-900" id="gdp-stat-total">48</p><p class="text-xs text-green-600 font-medium flex items-center gap-1 mt-0.5"><svg class="w-3 h-3"><use href="#ico-trending"/></svg>+8 este mês</p></div>
+                </div>
+                <div class="card p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-green-600"><use href="#ico-check"/></svg></div>
+                    <div><p class="text-xs text-gray-500 uppercase tracking-wide font-medium">Confirmados</p><p class="text-2xl font-display font-bold text-gray-900" id="gdp-stat-confirmados">32</p><p class="text-xs text-green-600 font-medium flex items-center gap-1 mt-0.5"><svg class="w-3 h-3"><use href="#ico-trending"/></svg>66,7% do total</p></div>
+                </div>
+                <div class="card p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-50 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-yellow-600"><use href="#ico-clock"/></svg></div>
+                    <div><p class="text-xs text-gray-500 uppercase tracking-wide font-medium">Pendentes</p><p class="text-2xl font-display font-bold text-gray-900" id="gdp-stat-pendentes">9</p><p class="text-xs text-yellow-600 font-medium mt-0.5">Aguardando ação</p></div>
+                </div>
+                <div class="card p-5 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-marca-50 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-marca-700"><use href="#ico-dollar"/></svg></div>
+                    <div><p class="text-xs text-gray-500 uppercase tracking-wide font-medium">Valor Total</p><p class="text-2xl font-display font-bold text-gray-900" id="gdp-stat-valor">R$ 0</p><p class="text-xs text-green-600 font-medium flex items-center gap-1 mt-0.5"><svg class="w-3 h-3"><use href="#ico-trending"/></svg>+R$ 3.200 este mês</p></div>
+                </div>
+            </div>
+
+            <div class="card p-5">
+                <h3 class="text-sm font-display font-semibold text-gray-700 mb-4">Inscrições por Programa</h3>
+                <div class="flex items-end gap-3 h-36">
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-200 rounded-t-md hover:bg-marca-300 transition-colors relative group" style="height:85%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">38</span></div><span class="text-xs text-gray-500">Reabilitação</span></div>
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-400 rounded-t-md hover:bg-marca-500 transition-colors relative group" style="height:60%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">24</span></div><span class="text-xs text-gray-500">Desintox.</span></div>
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-600 rounded-t-md hover:bg-marca-700 transition-colors relative group text-white" style="height:45%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">18</span></div><span class="text-xs text-gray-500">Família</span></div>
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-300 rounded-t-md hover:bg-marca-400 transition-colors relative group" style="height:30%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">12</span></div><span class="text-xs text-gray-500">Artes</span></div>
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-100 rounded-t-md hover:bg-marca-200 transition-colors relative group" style="height:20%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">7</span></div><span class="text-xs text-gray-500">Esportes</span></div>
+                    <div class="flex-1 flex flex-col items-center gap-1.5"><div class="w-full bg-marca-500 rounded-t-md hover:bg-marca-600 transition-colors relative group text-white" style="height:15%"><span class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">4</span></div><span class="text-xs text-gray-500">Espiritual</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="p-5 border-b border-gray-100">
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <div class="relative flex-1 min-w-[200px] max-w-md">
+                            <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"><use href="#ico-search"/></svg>
+                            <input type="text" id="gdp-busca" placeholder="Buscar por nome, pedido ou programa..." oninput="gestao_de_pedidos_filtrar()" class="w-full pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent transition-all">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gray-400"><use href="#ico-filter"/></svg>
+                            <select id="gdp-filtro-status" onchange="gestao_de_pedidos_filtrar()" class="text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent bg-white transition-all">
+                                <option value="">Todos os status</option><option value="Confirmado">Confirmado</option><option value="Pendente">Pendente</option><option value="Pago">Pago</option><option value="Cancelado">Cancelado</option>
+                            </select>
+                            <select id="gdp-filtro-programa" onchange="gestao_de_pedidos_filtrar()" class="text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent bg-white transition-all">
+                                <option value="">Todos os programas</option><option value="Reabilitação">Reabilitação</option><option value="Desintoxicação">Desintoxicação</option><option value="Apoio Familiar">Apoio Familiar</option><option value="Artes Terapêuticas">Artes Terapêuticas</option><option value="Esportes">Esportes</option><option value="Espiritualidade">Espiritualidade</option>
+                            </select>
+                            <select id="gdp-filtro-periodo" onchange="gestao_de_pedidos_filtrar()" class="text-sm border border-gray-200 rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-marca-500 focus:border-transparent bg-white transition-all">
+                                <option value="">Qualquer período</option><option value="7">Últimos 7 dias</option><option value="30">Últimos 30 dias</option><option value="90">Últimos 3 meses</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[900px]">
+                        <thead><tr class="bg-gray-50">
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Pedido</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Participante</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Programa</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Data</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Valor</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Status</th>
+                            <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Pagamento</th>
+                            <th class="text-right text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3.5">Ações</th>
+                        </tr></thead>
+                        <tbody id="gdp-tabela-corpo"></tbody>
+                    </table>
+                </div>
+                <div class="px-5 py-4 border-t border-gray-100 flex items-center justify-between">
+                    <p class="text-sm text-gray-500"><span id="gdp-contador">0</span> pedidos encontrados</p>
+                    <div class="flex items-center gap-2">
+                        <button onclick="gestao_de_pedidos_pagina(-1)" class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-40" id="gdp-prev"><svg class="w-4 h-4 text-gray-600"><use href="#ico-chevron"/></svg></button>
+                        <span class="text-sm text-gray-600" id="gdp-pagina-num">1</span>
+                        <button onclick="gestao_de_pedidos_pagina(1)" class="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors" id="gdp-next"><svg class="w-4 h-4 text-gray-600 rotate-180"><use href="#ico-chevron"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gdp-modal-container"></div>
+
+        <script>
+        (function(){
+            var dadosPedidos = [
+                {id:1,pedido:'PED-2026-042',nome:'João Carlos Mendes',iniciais:'JM',corAvatar:'bg-blue-500',programa:'Reabilitação',data:'2026-04-02',valor:2800.00,status:'Confirmado',pagamento:'Pago',telefone:'(11) 98765-4321',email:'joao.mendes@email.com',endereco:'Rua das Acácias, 127 — São Paulo, SP',observacoes:'Participante indicação do Dr. Ricardo. Disponível para início imediato.',historico:[{data:'2026-04-02',acao:'Pedido criado pelo participante'},{data:'2026-04-02',acao:'Pagamento confirmado via PIX'},{data:'2026-04-03',acao:'Inscrição confirmada pela equipe'}]},
+                {id:2,pedido:'PED-2026-043',nome:'Maria Fernanda Oliveira',iniciais:'MO',corAvatar:'bg-pink-500',programa:'Apoio Familiar',data:'2026-04-03',valor:1200.00,status:'Confirmado',pagamento:'Pago',telefone:'(11) 91234-5678',email:'m.oliveira@email.com',endereco:'Av. Paulista, 890 — São Paulo, SP',observacoes:'Família encaminhada pelo CRAS Butantã.',historico:[{data:'2026-04-03',acao:'Pedido criado pelo participante'},{data:'2026-04-03',acao:'Pagamento confirmado — Cartão de Crédito'},{data:'2026-04-04',acao:'Inscrição confirmada pela equipe'}]},
+                {id:3,pedido:'PED-2026-044',nome:'Carlos Eduardo Santos',iniciais:'CS',corAvatar:'bg-emerald-500',programa:'Desintoxicação',data:'2026-04-04',valor:3500.00,status:'Pendente',pagamento:'Pendente',telefone:'(11) 99876-5432',email:'carlos.santos@email.com',endereco:'Rua Augusta, 450 — São Paulo, SP',observacoes:'Aguardando comprovante de pagamento. Entrada prevista para 15/04.',historico:[{data:'2026-04-04',acao:'Pedido criado pelo participante'}]},
+                {id:4,pedido:'PED-2026-045',nome:'Ana Beatriz Costa',iniciais:'AC',corAvatar:'bg-purple-500',programa:'Artes Terapêuticas',data:'2026-04-05',valor:1500.00,status:'Pago',pagamento:'Pago',telefone:'(11) 97654-3210',email:'ana.costa@email.com',endereco:'Rua Cardoso de Almeida, 230 — São Paulo, SP',observacoes:'Inscrição aprovada. Aguardando confirmação de vaga.',historico:[{data:'2026-04-05',acao:'Pedido criado pelo participante'},{data:'2026-04-05',acao:'Pagamento confirmado via PIX'},{data:'2026-04-06',acao:'Pagamento confirmado'}]},
+                {id:5,pedido:'PED-2026-046',nome:'Pedro Henrique Lima',iniciais:'PL',corAvatar:'bg-orange-500',programa:'Esportes',data:'2026-04-05',valor:800.00,status:'Confirmado',pagamento:'Pago',telefone:'(11) 96543-2109',email:'pedro.lima@email.com',endereco:'Rua Harmonia, 78 — São Paulo, SP',observacoes:'Participante recorrente. Retornando ao programa após 6 meses.',historico:[{data:'2026-04-05',acao:'Pedido criado pelo participante'},{data:'2026-04-05',acao:'Pagamento confirmado — PIX'},{data:'2026-04-06',acao:'Inscrição confirmada pela equipe'}]},
+                {id:6,pedido:'PED-2026-047',nome:'Fernanda Almeida Souza',iniciais:'FS',corAvatar:'bg-teal-500',programa:'Espiritualidade',data:'2026-04-06',valor:600.00,status:'Cancelado',pagamento:'Reembolsado',telefone:'(11) 95432-1098',email:'f.souza@email.com',endereco:'Rua da Consolação, 1200 — São Paulo, SP',observacoes:'Cancelado a pedido da participante. Motivo: mudança de data de início. Reembolso processado.',historico:[{data:'2026-04-06',acao:'Pedido criado pelo participante'},{data:'2026-04-06',acao:'Pagamento confirmado'},{data:'2026-04-07',acao:'Cancelamento solicitado pela participante'},{data:'2026-04-07',acao:'Pedido cancelado. Reembolso iniciado.'}]},
+                {id:7,pedido:'PED-2026-048',nome:'Lucas Gabriel Pereira',iniciais:'GP',corAvatar:'bg-indigo-500',programa:'Reabilitação',data:'2026-04-07',valor:2800.00,status:'Pendente',pagamento:'Pendente',telefone:'(11) 94321-0987',email:'lucas.pereira@email.com',endereco:'Rua Haddock Lobo, 345 — São Paulo, SP',observacoes:'Encaminhamento familiar. Entrevista de triagem agendada para 10/04.',historico:[{data:'2026-04-07',acao:'Pedido criado pelo participante'}]},
+                {id:8,pedido:'PED-2026-049',nome:'Patricia Rodrigues',iniciais:'PR',corAvatar:'bg-rose-500',programa:'Desintoxicação',data:'2026-04-07',valor:3500.00,status:'Pago',pagamento:'Pago',telefone:'(11) 93210-9876',email:'patricia.r@email.com',endereco:'Alameda Santos, 700 — São Paulo, SP',observacoes:'Pagamento em boleto confirmado. Processo de admissão iniciado.',historico:[{data:'2026-04-07',acao:'Pedido criado pelo participante'},{data:'2026-04-08',acao:'Pagamento confirmado via Boleto'},{data:'2026-04-08',acao:'Aguardando confirmação de vaga'}]},
+                {id:9,pedido:'PED-2026-050',nome:'Roberto Nascimento Junior',iniciais:'RN',corAvatar:'bg-amber-600',programa:'Apoio Familiar',data:'2026-04-08',valor:1200.00,status:'Confirmado',pagamento:'Pago',telefone:'(11) 92109-8765',email:'roberto.n@email.com',endereco:'Rua Oscar Freire, 200 — São Paulo, SP',observacoes:'Grupo familiar completo — 4 membros. Início em grupo já confirmado.',historico:[{data:'2026-04-08',acao:'Pedido criado pelo participante'},{data:'2026-04-08',acao:'Pagamento confirmado via Cartão'},{data:'2026-04-09',acao:'Inscrição confirmada pela equipe'}]},
+                {id:10,pedido:'PED-2026-051',nome:'Camila Vitória Barbosa',iniciais:'CB',corAvatar:'bg-cyan-500',programa:'Artes Terapêuticas',data:'2026-04-09',valor:1500.00,status:'Pendente',pagamento:'Parcial',telefone:'(11) 91098-7654',email:'camila.b@email.com',endereco:'Rua Pamplona, 900 — São Paulo, SP',observacoes:'Pagamento parcial de R$ 750,00 via PIX. Saldo restante até início do programa.',historico:[{data:'2026-04-09',acao:'Pedido criado pelo participante'},{data:'2026-04-09',acao:'Pagamento parcial confirmado — R$ 750,00'}]}
+            ];
+
+            var gdp_pagina = 0;
+            var gdp_porPagina = 8;
+            var gdp_filtrados = dadosPedidos.slice();
+
+            function gestao_de_pedidos_statusBadge(status){
+                var m = {'Confirmado':'bg-green-100 text-green-700 border-green-200','Pago':'bg-green-100 text-green-700 border-green-200','Pendente':'bg-yellow-100 text-yellow-700 border-yellow-200','Cancelado':'bg-red-100 text-red-700 border-red-200','Reembolsado':'bg-gray-100 text-gray-600 border-gray-200','Parcial':'bg-blue-100 text-blue-700 border-blue-200'};
+                var c = m[status] || 'bg-gray-100 text-gray-600 border-gray-200';
+                return '<span class="badge ' + c + ' text-xs px-2.5 py-1
+
     <!-- TELAS -->
     </main>
   </div>
